@@ -16,7 +16,8 @@ em:
   environment:
     - HEAP="2048m"
   volumes:
-    - ~/mm:/root/Introscope/config/modules
+#    - ~/mm:/root/Introscope/config/modules
+    - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
 
 db:
   build: database/9.6.0.0

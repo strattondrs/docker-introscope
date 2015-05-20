@@ -80,6 +80,11 @@ if [ -d /transfer/modules ] ; then
 	cp /transfer/modules/*.jar ${INTROSCOPE_HOME}/config/modules
 fi
 
+# copy type viewers from linked volume
+if [ -d /transfer/xmltv ] ; then
+	cp /transfer/xmltv/*.xml ${INTROSCOPE_HOME}/ext/xmltv
+fi
+
 # configure the heap
 if [ "${HEAP_XMX}" == "**DEFAULT**" ] ; then
 	unset HEAP_XMX

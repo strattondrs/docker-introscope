@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 introscopeinstallfile="introscope9.6.0.0otherUnix.jar"
 osgipackages="osgiPackages.v9.6.0.0.unix.tar"
