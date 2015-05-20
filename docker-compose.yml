@@ -7,7 +7,7 @@
 #
 
 em:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager/9.7.1.16
   links:
     - db:db
   ports:
@@ -20,10 +20,10 @@ em:
     - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
 
 db:
-  build: database/9.6.0.0
+  build: database/9.7.1.16
 
 webview:
-  build: webview/9.6.0.0
+  build: webview/9.7.1.16
   links:
     - em:em
   ports:

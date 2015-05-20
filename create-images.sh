@@ -1,6 +1,6 @@
 #!/bin/sh
 path=$(pwd)
-INTROSCOPE_VERSION=9.6.0.0
+INTROSCOPE_VERSION=9.7.1.16
 
 echo "Building Database image"
 cd $path/database/$INTROSCOPE_VERSION; ./build-image.sh ;
