@@ -10,5 +10,8 @@ cp IntroscopeWebView-orig.properties ${INTROSCOPE_HOME}/config/IntroscopeWebView
 sed -i s/EM_HOST_MARKER/${EM_PORT_5001_TCP_ADDR}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 sed -i s/EM_PORT_MARKER/${EM_PORT_5001_TCP_PORT}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 
+# give EM time to start up
+sleep 15s
+
 # now we correctly set everything and startup the enterprise manager.
 ${INTROSCOPE_HOME}/Introscope_WebView

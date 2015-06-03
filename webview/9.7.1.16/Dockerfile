@@ -23,7 +23,7 @@ ADD startup.sh /opt/introscope-install/startup.sh
 RUN chmod +x startup.sh
 
 # run the installation of the enterprise manager
-RUN java -jar $INTROSCOPE_BIN -f SampleResponseFile.Introscope.txt
+RUN java -Xmx2048m -jar $INTROSCOPE_BIN -f SampleResponseFile.Introscope.txt
 
 # Port on which WebView will listen for HTTP connections.
 EXPOSE 8080
