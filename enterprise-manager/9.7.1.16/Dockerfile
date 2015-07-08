@@ -8,7 +8,7 @@ WORKDIR /opt/introscope-install
 ENV INTROSCOPE_VERSION=9.7.1.16
 ### End for new Introscope version
 
-ENV INTROSCOPE_HOME=/root/Introscope
+ENV INTROSCOPE_HOME=/opt/CA/Introscope
 ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 ENV INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 

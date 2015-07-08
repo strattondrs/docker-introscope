@@ -18,6 +18,7 @@ em:
   volumes:
 #    - ~/mm:/root/Introscope/config/modules
     - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
+    - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
 db:
   build: database/9.7.1.16
