@@ -1,6 +1,6 @@
 FROM jeanblanchard/busybox-java:7
 
-MAINTAINER sieglst@googlemail.com / stefan.siegl@novatec-gmbh.de
+MAINTAINER guenter.grossberger@ca.com
 
 WORKDIR /opt/introscope-install
 

@@ -7,7 +7,7 @@
 #
 
 em:
-  build: enterprise-manager/9.7.1.16
+  build: enterprise-manager
   links:
     - db:db
   ports:
@@ -21,10 +21,10 @@ em:
     - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
 db:
-  build: database/9.7.1.16
+  build: database
 
 webview:
-  build: webview/9.7.1.16
+  build: webview
   links:
     - em:em
   ports:
