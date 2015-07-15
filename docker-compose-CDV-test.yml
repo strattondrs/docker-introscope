@@ -14,7 +14,7 @@
 
 
 cdv:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - cdvdb:db
     - collector1:em1
@@ -24,17 +24,17 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  build: database/9.6.0.0
+  build: database
 
 cdvwebview:
-  build: webview/9.6.0.0
+  build: webview
   links:
     - cdv:em
   ports:
     - "8080:8080"
 
 collector1:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - collector1db:db
   environment:
@@ -42,15 +42,15 @@ collector1:
     - CLUSTER_ROLE=Collector
 
 collector1db:
-  build: database/9.6.0.0
+  build: database
 
 sample1:
-  build: sample/9.6.0.0
+  build: sample
   links:
     - collector1:em
 
 collector2:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - collector2db:db
   environment:
@@ -58,9 +58,9 @@ collector2:
     - CLUSTER_ROLE=Collector
 
 collector2db:
-  build: database/9.6.0.0
+  build: database
 
 sample2:
-  build: sample/9.6.0.0
+  build: sample
   links:
     - collector2:em

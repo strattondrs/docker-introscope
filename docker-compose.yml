@@ -7,7 +7,7 @@
 #
 
 em:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - db:db
   ports:
@@ -16,14 +16,16 @@ em:
   environment:
     - HEAP="2048m"
   volumes:
-    - ~/mm:/root/Introscope/config/modules
+#    - ~/mm:/root/Introscope/config/modules
+    - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
+    - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
 db:
-  build: database/9.6.0.0
+  build: database
 
 webview:
-  build: webview/9.6.0.0
+  build: webview
   links:
     - em:em
   ports:
-    - "8080:8080"
+    - "8082:8080"

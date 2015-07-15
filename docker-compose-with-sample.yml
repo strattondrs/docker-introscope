@@ -8,7 +8,7 @@
 #
 
 em:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - db:db
   ports:
@@ -21,16 +21,16 @@ em:
     - ~/mm:/root/Introscope/config/modules
 
 db:
-  build: database/9.6.0.0
+  build: database
 
 webview:
-  build: webview/9.6.0.0
+  build: webview
   links:
     - em:em
   ports:
     - "8080:8080"
 
 sample:
-  build: sample/9.6.0.0
+  build: sample
   links:
     - em:em

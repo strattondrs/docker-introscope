@@ -7,12 +7,12 @@ This project hosts docker (https://www.docker.com/) images build for the APM sol
 - Introscope Enterprise Manager database using Postgresql
 - An Introscope sample application (small EPAgent) for demonstration purposes
 
-Currently only Introscope version 9.6 is supported as this is the version we are using at the customer project I am currently consulting. But the structure is meant to be extended with additional versions. Please feel free to contribute newer versions.
+This version support Introscope version 9.7. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
 
 The current idea is to have single-process containers, thus the enterprise manager database and the web interface are own images. As docker containers are very light-weight, this is no overhead.
 
 ## Quick start with docker-compose
-1. place the Introscope binaries into the folders. The enterprise manager projects need "introscope9.6.0.0otherUnix.jar" and "osgiPackages.v9.6.0.0.unix.tar".
+1. place the Introscope binaries into the folders. The enterprise manager projects need "introscope9.7.1.16otherUnix.jar" and "osgiPackages.v9.7.1.16.unix.tar".
 
 2. Run "sudo docker-compose -f docker-compose-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
 
@@ -23,15 +23,15 @@ Without docker-compose you have to build the images and run the containers yours
 
 1. Place the introscope dependencies (see Quick start with docker-compose step 1)
 
-2. Manually build all images. You can use the shell script "create-images-9.6.0.0.sh"
+2. Manually build all images. You can use the shell script "create-images.sh"
 
-3. Start the default database container by ./database/9.6.0.0/run-default-postgres-container.sh
+3. Start the default database container by ./database/run-default-postgres-container.sh
 
-4. Start the enterprise manager container by ./enterprise-manager/9.6.0.0/run-default-em-container.sh
+4. Start the enterprise manager container by ./enterprise-manager/run-default-em-container.sh
 
-5. Start the sample application container by ./sample/9.6.0.0/run-default-sample-container.sh
+5. Start the sample application container by ./sample/run-default-sample-container.sh
 
-6. Start the web view container by ./webview/9.6.0.0/run-default-webview-container.sh
+6. Start the web view container by ./webview/run-default-webview-container.sh
 
 7. Access the introscope webview at localhost:8080
 
@@ -53,7 +53,7 @@ Have a look at the docker-compose-CDV file for an example of how to name the lin
 
 ```
 cdv:
-  build: enterprise-manager/9.6.0.0
+  build: enterprise-manager
   links:
     - cdvdb:db
     - collector1:em1
@@ -69,13 +69,13 @@ cdv:
 There are two ways to manage management modules with this image. The quick approach is to "mount" a local folder that is then used as management module folder. Drawback of this approach is, that the local folder overwrites the management module folder of the enterprise manager. So you need to place the out-of-the-box management modules in this folder as well.
 
 ```
-docker run -d --name introscope-em --link introscope-db:db -v [localfolder]:/root/Introscope/config/modules stefansiegl/introscope-em:9.6.0.0
+docker run -d --name introscope-em --link introscope-db:db -v [localfolder]:/root/Introscope/config/modules stefansiegl/introscope-em:9.7.1.16
 ```
 
 The second approach allows to add management modules to the existing config/modules folder. The startup script of the container ensures that all files that are within /transfer/modules (in the container) are copied to the config/modules folder. Thus you could keep the management modules you want to integrate locally in a folder and run the container like this (note that the management modules you copied to the container are persisted):
 
 ```
-docker run -d --name introscope-em --link introscope-db:db -v [localfolder_containing_MM]:/transfer/modules stefansiegl/introscope-em:9.6.0.0
+docker run -d --name introscope-em --link introscope-db:db -v [localfolder_containing_MM]:/transfer/modules stefansiegl/introscope-em:9.7.1.16
 ```
 
 ### Installing Plugins
@@ -96,7 +96,7 @@ Environment variables can be set for example by
 
 Topic | description
 ---|---|
-Binaries | Place introscope[version]otherUnix.jar (example: introscope9.6.0.0otherUnix.jar) and osgiPackages.[version].unix.tar (example: osgiPackages.v9.6.0.0.unix.tar) in the folder
+Binaries | Place introscope[version]otherUnix.jar (example: introscope9.7.1.16otherUnix.jar) and osgiPackages.[version].unix.tar (example: osgiPackages.v9.7.1.16.unix.tar) in the folder
 Build    | Execute build-image.sh
 Run      | Execute run-default-em-container.sh (or use docker-compose - recommended)
 
@@ -118,7 +118,7 @@ Basically this image mirrors the enterprise manager in many ways. I figured that
 
 Topic | description
 ---|---|
-Binaries | Place introscope[version]otherUnix.jar (example: introscope9.6.0.0otherUnix.jar) and osgiPackages.[version].unix.tar (example: osgiPackages.v9.6.0.0.unix.tar) in the folder
+Binaries | Place introscope[version]otherUnix.jar (example: introscope9.7.1.16otherUnix.jar) and osgiPackages.[version].unix.tar (example: osgiPackages.v9.7.1.16.unix.tar) in the folder
 Build    | Execute build-image.sh
 Run      | Execute run-default-webview-container.sh (or use docker-compose - recommended)
 
@@ -128,7 +128,7 @@ This is really just a very small EPAgent sample application. I included this, as
 
 Topic | description
 ---|---|
-Binaries | Place EPAgent[version]unix.tar (example: EPAgent9.6.0.0unix.tar) in the folder
+Binaries | Place EPAgent[version]unix.tar (example: EPAgent9.7.1.16unix.tar) in the folder
 Build    | Execute build-image.sh
 Run      | Execute run-default-sample-container.sh (or use docker-compose - recommended)
 

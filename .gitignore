@@ -1,5 +1,7 @@
-introscope9.6.0.0otherUnix.jar
-osgiPackages.v9.6.0.0.unix.tar
+introscope*otherUnix.jar
+osgiPackages.v*unix.tar
 license.lic
 addons/em/*
 addons/workstation/*
+transfer/*
+.DS_Store
