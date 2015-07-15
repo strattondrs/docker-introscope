@@ -4,7 +4,6 @@
 #
 ##############################################################################
 # 
-# 
 # ﻿현재 설치 중인 CA 소프트웨어 제품(이하 "본건 제품"이라 함), 본건 제품 내에 포함된 관련 문서 및 소프트웨어개발키트(이하 "SDK"라 함)에 관한 최종사용자라이센스계약(이하 "본 계약"이라 함)
 # 
 # 본건 제품을 설치 및 사용하기 전, 본건 제품 사용과 관련한 하기 조건을 주의 깊게 읽으십시오.  본 계약에서 여러분이라 함은 "귀하" 또는 "라이센시"를 의미합니다.  
@@ -270,6 +269,8 @@
 # 16.  본건 제품에 제3자 소프트웨어가 포함되어 있고, 라이센스허여자가 동 소프트웨어에 대한 특정 라이센스 조건을 본 계약에 통합하기를 요구하는 경우, 그러한 조건은 (본 계약에 의해 참조용으로 통합되며) 본 계약의 하기에 기재됩니다.  
 # 
 # 라이센스도입자는 본 라이센스를 읽고 이해하였으며 [라이센스계약의 조건에 동의함]이라는 라디오 버튼을 선택하는 경우 상기 라이센스 조건을 수락하는 것임을 인정합니다. 또한, 라이센스도입자는 본 라이센스(본 계약, 및 하기에 명시된 제3자 소프트웨어 관련 조건이 명시된 주문양식 포함)가 본 주제와 관련하여 양 당사자 간의 완전한 합의를 구성한다는 점, 본 라이센스가 본 계약의 주제와 관련하여 라이센스도입자가 수령한 바 있는 모든 정보를 대체한다는 점(단, 하기 제3자 관련 조건을 제외하고 본 계약이 라이센스도입자 및 CA가 체결한 서면 계약(라이센스도입자가 제품 사용 라이센스를 허여받는 내용)에 의해 대체되는 경우는 예외로 함)에 동의합니다. 본 계약은 양 당사자의 수권 대표가 서명한 서면 계약에 의해서만 변경될 수 있습니다.
+# 
+# = = = = =
 # 
 # ﻿= = = = =
 # 
@@ -2741,6 +2742,30 @@
 # 
 # #####-----
 # -------------------------------
+# # TPSR #: 11958_52
+# # Component Name:       Commons Codec 1.7
+# ------------------------------------
+# 
+# Apache Commons Codec
+# Copyright 2002-2012 The Apache Software Foundation
+# 
+# This product includes software developed by
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# --------------------------------------------------------------------------------
+# src/test/org/apache/commons/codec/language/DoubleMetaphoneTest.java contains 
+# test data from http://aspell.sourceforge.net/test/batch0.tab.
+# 
+# Copyright (C) 2002 Kevin Atkinson (kevina@gnu.org). Verbatim copying
+# and distribution of this entire article is permitted in any medium,
+# provided this notice is preserved.
+# --------------------------------------------------------------------------------
+# 
+# # end # TPSR #: 11958_52
+# -----#####
+# 
+# #####-----
+# -------------------------------
 # # TPSR #: 08859_6
 # # Component Name:       Apache Commons JXPath 1.3
 # ------------------------------------
@@ -2771,6 +2796,21 @@
 # 
 # #####-----
 # -------------------------------
+# # TPSR #: 06919_38
+# # Component Name:       Commons Lang 2.6
+# ------------------------------------
+# 
+# Apache Commons Lang
+# Copyright 2001-2011 The Apache Software Foundation
+# 
+# This product includes software developed by
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 06919_38
+# -----#####
+# 
+# #####-----
+# -------------------------------
 # # TPSR #: 12907_6
 # # Component Name:       Spring Framework 3.2.2.RELEASE
 # ------------------------------------
@@ -2788,6 +2828,88 @@
 # subcomponent's license, as noted in the license.txt file.
 # 
 # # end # TPSR #: 12907_6
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_4
+# # Component Name:       Spring Framework 4.0.8.RELEASE
+# ------------------------------------
+# 
+# Spring Framework 4.0.8.RELEASE
+# Copyright (c) 2002-2014 Pivotal, Inc.
+# 
+# This product is licensed to you under the Apache License, Version 2.0
+# (the "License"). You may not use this product except in compliance with
+# the License.
+# 
+# This product may include a number of subcomponents with separate
+# copyright notices and license terms. Your use of the source code for
+# these subcomponents is subject to the terms and conditions of the
+# subcomponent's license, as noted in the license.txt file.
+# 
+# # end # TPSR #: 00000087_4
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_6
+# # Component Name:       Spring Data Commons 1.9.1.RELEASE
+# ------------------------------------
+# 
+# Spring Data Commons 1.9.1
+# Copyright (c) [2010-2014] Pivotal Software, Inc.
+# 
+# This product is licensed to you under the Apache License, Version 2.0 (the "License").
+# You may not use this product except in compliance with the License.
+# 
+# This product may include a number of subcomponents with
+# separate copyright notices and license terms. Your use of the source
+# code for the these subcomponents is subject to the terms and
+# conditions of the subcomponent's license, as noted in the LICENSE file.
+# 
+# # end # TPSR #: 00000087_6
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_5
+# # Component Name:       Spring Data Rest 2.2.1.RELEASE
+# ------------------------------------
+# 
+# Spring Data REST 2.2.1
+# Copyright (c) 2012-2014 Pivotal Software, Inc.
+# 
+# This product is licensed to you under the Apache License, Version 2.0
+# (the "License"). You may not use this product except in compliance with
+# the License.
+# 
+# This product may include a number of subcomponents with separate
+# copyright notices and license terms. Your use of the source code for
+# these subcomponents is subject to the terms and conditions of the
+# subcomponent's license, as noted in the license.txt file.
+# 
+# # end # TPSR #: 00000087_5
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_7
+# # Component Name:       Spring Hateoas 0.16.0
+# ------------------------------------
+# 
+# Spring Hateoas 0.16.0
+# Copyright (c) [2012-2014] Pivotal Software, Inc.
+# 
+# This product is licensed to you under the Apache License, Version 2.0 (the "License").  
+# You may not use this product except in compliance with the License.  
+# 
+# This product may include a number of subcomponents with
+# separate copyright notices and license terms. Your use of the source
+# code for the these subcomponents is subject to the terms and
+# conditions of the subcomponent's license, as noted in the LICENSE file.
+# 
+# # end # TPSR #: 00000087_7
 # -----#####
 # 
 # #####-----
@@ -2976,6 +3098,180 @@
 # ####End of TPSR ID:  12906_11 
 # ######## -------------------------------------------------------------------
 # 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_9
+# # Component Name:       Objenesis 2.1.0
+# ------------------------------------
+# 
+# Objenesis
+# Copyright 2006-2013 Joe Walnes, Henri Tremblay, Leonardo Mesquita
+# 
+# # end # TPSR #: 00000087_9
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_10
+# # Component Name:       jackson 2.4.1
+# ------------------------------------
+# 
+# # Jackson JSON processor
+# 
+# Jackson is a high-performance, Free/Open Source JSON processing library.
+# It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+# been in development since 2007.
+# It is currently developed by a community of developers, as well as supported
+# commercially by FasterXML.com.
+# 
+# ## Licensing
+# 
+# Jackson core and extension components may licensed under different licenses.
+# To find the details that apply to this artifact see the accompanying LICENSE file.
+# For more information, including possible other licensing options, contact
+# FasterXML.com (http://fasterxml.com).
+# 
+# ## Credits
+# 
+# A list of contributors may be found from CREDITS file, which is included
+# in some artifacts (usually source distributions); but is always available
+# from the source code management (SCM) system project uses.
+# 
+# # end # TPSR #: 00000087_10
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000087_23
+# # Component Name:       XML Security 1.5.7
+# ------------------------------------
+# 
+# Apache XML Security for Java
+# Copyright 2000-2014 The Apache Software Foundation
+# 
+# This product includes software developed at
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 00000087_23
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000379_65
+# # Component Name:       Velocity 1.7
+# ------------------------------------
+# 
+# Apache Velocity
+# 
+# Copyright (C) 2000-2007 The Apache Software Foundation
+# 
+# This product includes software developed at
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 00000379_65
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000910_1 
+# # Component Name:       httpcore 4.3.2
+# ------------------------------------
+# 
+# Apache HttpCore
+# Copyright 2005-2014 The Apache Software Foundation
+# 
+# This product includes software developed at
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# 
+# This project contains annotations derived from JCIP-ANNOTATIONS
+# Copyright (c) 2005 Brian Goetz and Tim Peierls. See http://www.jcip.net
+# 
+# # end # TPSR #: 00000910_1
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 00000462_10 
+# # Component Name:       httpclient 4.3.2
+# ------------------------------------
+# 
+# Apache HttpClient
+# Copyright 1999-2014 The Apache Software Foundation
+# 
+# This product includes software developed at
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 00000462_10
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 06313_1 
+# # Component Name:       Commons httpclient 3.1
+# ------------------------------------
+# 
+# Apache Jakarta HttpClient
+# Copyright 1999-2007 The Apache Software Foundation
+# 
+# This product includes software developed by
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 06313_1
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: 13023_14 
+# # Component Name:       Xerces-J 2.11.0
+# ------------------------------------
+# 
+#    =========================================================================
+#    ==  NOTICE file corresponding to section 4(d) of the Apache License,   ==
+#    ==  Version 2.0, in this case for the Apache Xerces Java distribution. ==
+#    =========================================================================
+# 
+#    Apache Xerces Java
+#    Copyright 1999-2010 The Apache Software Foundation
+# 
+#    This product includes software developed at
+#    The Apache Software Foundation (http://www.apache.org/).
+# 
+#    Portions of this software were originally based on the following:
+#      - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+#      - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+#      - voluntary contributions made by Paul Eng on behalf of the 
+#        Apache Software Foundation that were originally developed at iClick, Inc.,
+#        software copyright (c) 1999.
+# 
+# # end # TPSR #: 13023_14
+# -----#####
+# 
+# #####-----
+# -------------------------------
+# # TPSR #: P02273_25 
+# # Component Name:       Joda-time 1.6
+# ------------------------------------
+# 
+# =============================================================================
+# = NOTICE file corresponding to section 4d of the Apache License Version 2.0 =
+# =============================================================================
+# This product includes software developed by
+# Joda.org (http://www.joda.org/).
+# 
+# # end # TPSR #: P02273_25
+# -----#####
+# #####-----
+# -------------------------------
+# # TPSR #: 00000378_6 
+# # Component Name:      Log4j 1.2.14
+# ------------------------------------
+# This product includes software developed by
+# The Apache Software Foundation (http://www.apache.org/).
+# 
+# # end # TPSR #: 00000378_6
+# -----#####
+# 
 # Last updated 2014-08-20
 # 
 # 위에 기술된 이 계약의 조건에 동의하고 설치 과정을 진행하려면 아래에 "accept"를 입력하십시오.
@@ -2983,4 +3279,4 @@
 # 설치 과정을 중단하려면 아래에 "reject"를 입력하십시오. 
 # 
 # CA-EULA에 대한 올바른 값은 다음과 같습니다: {accept, reject}. 
-CA-EULA=reject
+CA-EULA=accept

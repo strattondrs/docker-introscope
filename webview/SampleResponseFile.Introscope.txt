@@ -3,7 +3,7 @@
 # Introscope Silent Installation Response File
 #
 # Sample Response File
-# CA Wily Introscope(R) Version 9.7.1 Release 9.7.1.16
+# CA Wily Introscope(R) Version 10.0.0 Release 10.0.0.12
 # Copyright (c) 2015 CA. All Rights Reserved.
 # Introscope(R) is a registered trademark of CA.
 #
@@ -66,11 +66,11 @@ ca-eulaFile=eula-introscope/ca-eula.txt
 # Example Unix install directory: /IntroscopeSilentInstall/
 # Left blank, this property will default to one of the following values:
 # On Windows...
-#    C:\\Program Files\\CA APM\\Introscope9.7.1.16\\
+#    C:\\Program Files\\CA APM\\Introscope10.0.0.12\\
 #        (Exact name and drive letter of program files directory may vary
 #        depending on OS configuration)
 # On Unix...
-#    /root/Introscope9.7.1.16/
+#    /root/Introscope10.0.0.12/
 #        (Under the logged-in-end-user's home directory. Exact directory may vary
 #        depending on user account.)
 USER_INSTALL_DIR=/root/Introscope
@@ -98,7 +98,7 @@ silentInstallChosenFeatures=Enterprise Manager,WebView,ProbeBuilder
 #    Example Windows value: C:\\osgiPackages.v<x.y>.windows.zip
 #    Example Unix value:    /osgiPackages.v<x.y>.unix.tar
 #            where <x.y> should be a valid version string.
-externalComponentPackage=osgiPackages.v9.7.1.16.unix.tar
+externalComponentPackage=osgiPackages.v10.0.0.12.unix.tar
 
 # If the above chosen features list includes Enterprise Manager or WebView,
 # specify the location of the external component library's End User

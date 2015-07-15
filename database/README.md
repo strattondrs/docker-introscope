@@ -1,5 +1,5 @@
 # docker-introscope-postgres
-A docker (https://www.docker.com/) image build for the APM solution of CA Technologies (CA APM). This project build a docker image for a postgres database with the schema for Introscope 9.7.1.16. It is meant to be used in combination with the docker image docker-introscope-enterprisemanager (https://github.com/stefansiegl/docker-introscope-enterprisemanager).
+A docker (https://www.docker.com/) image build for the APM solution of CA Technologies (CA APM). This project build a docker image for a postgres database with the schema for Introscope 10.0.0.12. It is meant to be used in combination with the docker image docker-introscope-enterprisemanager (https://github.com/stefansiegl/docker-introscope-enterprisemanager).
 
 
 ## Building the image

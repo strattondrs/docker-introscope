@@ -1,7 +1,9 @@
 introscope*otherUnix.jar
 osgiPackages.v*unix.tar
+introscope*.tar
 license.lic
 addons/em/*
 addons/workstation/*
 transfer/*
 .DS_Store
+ca-eula*.txt

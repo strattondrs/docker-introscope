@@ -1,11 +1,11 @@
 FROM jeanblanchard/busybox-java:7
 
-MAINTAINER sieglst@googlemail.com / stefan.siegl@novatec-gmbh.de
+MAINTAINER guenter.grossberger@ca.com
 
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=9.7.1.16
+ENV INTROSCOPE_VERSION=10.0.0.12
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/root/Introscope

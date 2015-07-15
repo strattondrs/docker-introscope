@@ -16,5 +16,5 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	sudo docker build -t ggrossbe/introscope-webview-9.7 .
+	sudo docker build -t ggrossbe/introscope-webview-10.0 .
 fi
