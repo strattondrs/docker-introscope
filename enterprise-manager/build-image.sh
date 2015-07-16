@@ -1,7 +1,7 @@
 #!/bin/sh
 
-introscopeinstallfile="introscope9.7.1.16otherUnix.jar"
-osgipackages="osgiPackages.v9.7.1.16.unix.tar"
+introscopeinstallfile="introscope10.0.0.12otherUnix.jar"
+osgipackages="osgiPackages.v10.0.0.12.unix.tar"
 errors=false
 
 if [ ! -e $introscopeinstallfile ] ; then
@@ -10,11 +10,11 @@ if [ ! -e $introscopeinstallfile ] ; then
 fi
 
 if [ ! -e $osgipackages ] ; then
-	echo "FATAL: File $osgipackages does not exist. Please download this from http://opensrcd.ca.com/ips/osgi/introscope_9.7.1.16/"
+	echo "FATAL: File $osgipackages does not exist. Please download this from http://opensrcd.ca.com/ips/osgi/introscope_10.0.0.12/"
 	errors=true
 fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	sudo docker build -t ggrossbe/introscope-em-9.7 .
+	sudo docker build -t ggrossbe/introscope-em-10.0 .
 fi
