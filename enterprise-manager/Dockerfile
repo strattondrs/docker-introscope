@@ -27,7 +27,7 @@ COPY startup.sh /opt/introscope-install/startup.sh
 RUN chmod +x startup.sh
 
 RUN java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
-RUN rm ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
+RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
 
 WORKDIR ${INTROSCOPE_HOME}
 

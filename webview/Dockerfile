@@ -26,7 +26,7 @@ RUN chmod +x startup.sh
 
 # run the installation of WebView
 RUN java -Xmx2048m -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
-RUN rm ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
+RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
 
 WORKDIR ${INTROSCOPE_HOME}
 
