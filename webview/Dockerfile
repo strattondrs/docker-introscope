@@ -6,24 +6,29 @@ WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
 ENV INTROSCOPE_VERSION=10.0.0.12
+ENV INTROSCOPE_BUILD=10.0.0-ISCP/build-990010\(${INTROSCOPE_VERSION}\)
 ### End for new Introscope version
 
-ENV INTROSCOPE_HOME=/root/Introscope
+ENV INTROSCOPE_HOME=/opt/CA/Introscope
 ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 ENV INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 
-ADD SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
-ADD $INTROSCOPE_BIN /opt/introscope-install/$INTROSCOPE_BIN
-# I learned the hard way that ADDing a tar file will extract it - not what we want here.
-COPY $INTROSCOPE_OSGI /opt/introscope-install/$INTROSCOPE_OSGI
-ADD eula-osgi/eula.txt /opt/introscope-install/eula-osgi/eula.txt
-ADD eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
-ADD startup.sh /opt/introscope-install/startup.sh
+ENV HEAP_XMX **DEFAULT**
 
+COPY ${INTROSCOPE_OSGI} /opt/introscope-install/${INTROSCOPE_OSGI}
+COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
+COPY eula-osgi/eula.txt /opt/introscope-install/eula-osgi/eula.txt
+COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
+COPY startup.sh /opt/introscope-install/startup.sh
+COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
+#COPY addons /opt/introscope-install/addons
 RUN chmod +x startup.sh
 
-# run the installation of the enterprise manager
-RUN java -Xmx2048m -jar $INTROSCOPE_BIN -f SampleResponseFile.Introscope.txt
+# run the installation of WebView
+RUN java -Xmx2048m -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
+RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
+
+WORKDIR ${INTROSCOPE_HOME}
 
 # Port on which WebView will listen for HTTP connections.
 EXPOSE 8080

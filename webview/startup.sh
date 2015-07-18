@@ -10,6 +10,14 @@ cp IntroscopeWebView-orig.properties ${INTROSCOPE_HOME}/config/IntroscopeWebView
 sed -i s/EM_HOST_MARKER/${EM_PORT_5001_TCP_ADDR}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 sed -i s/EM_PORT_MARKER/${EM_PORT_5001_TCP_PORT}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 
+# configure the heap
+if [ "${HEAP_XMX}" == "**DEFAULT**" ] ; then
+	unset HEAP_XMX
+fi
+if [ -n "${HEAP_XMX}" ] ; then
+	sed -i s/Xmx512m/Xmx${HEAP_XMX}/g ${INTROSCOPE_HOME}/Introscope_Webview.lax
+fi
+
 # give EM time to start up
 sleep 15s
 
