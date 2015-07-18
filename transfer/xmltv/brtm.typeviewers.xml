@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeViewerSet namespace="brtm" version="2.0" xmlns="wily.typeviews" xmlns:its="http://www.w3.org/2005/11/its">
+    <!-- Component Definitions - Start -->
+    <ComponentDefinition id="BRTM-table">
+        <Panel columns="1" layout="GridLayout" rows="2">
+            <Graph relative-specifier=":Average .*">
+                <Title its:translate="yes">Average Response Time (ms)</Title>
+            </Graph>
+            <Graph relative-specifier=":Responses Per Interval">
+                <Title its:translate="yes">Responses Per Interval</Title>
+            </Graph>
+        </Panel>
+    </ComponentDefinition>
+    <!-- Component Definitions - End -->
+    <TypeViewer id="transaction-node" supported-agents=".*"
+        supported-items-specifier="Business Segment\|[^\|]+\|[^\|]+\|[^\|]+" tab-order="1">
+        <Title its:translate="yes">Browser</Title>
+        <Component id="BRTM-table" specifier-prepend="\|Browser"/>
+    </TypeViewer>
+    <TypeViewer id="browser-node" supported-agents=".*"
+        supported-items-specifier="Business Segment\|[^\|]+\|[^\|]+\|[^\|]+\|Browser" tab-order="1">
+        <Title its:translate="yes">Browser</Title>
+        <Component id="BRTM-table"/>
+    </TypeViewer>
+</TypeViewerSet>

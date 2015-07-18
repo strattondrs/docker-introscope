@@ -1,2 +1,11 @@
-#/bin/bash
-sudo docker build -t ggrossbe/introscope-postgres-10.0 .
+#!/bin/bash
+
+SUDO=
+
+if [ "$(id -u)" != "0" ]; then
+  if [ "$(uname)" != "Darwin" ]; then
+    SUDO=sudo
+  fi
+fi
+
+$SUDO docker build -t apm-postgres .

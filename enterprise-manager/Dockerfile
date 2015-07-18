@@ -10,8 +10,6 @@ ENV INTROSCOPE_BUILD=10.0.0-ISCP/build-990010\(${INTROSCOPE_VERSION}\)
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
-ENV TRUSS_URL=http://truss.ca.com/builds/InternalBuilds
-ENV INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 ENV INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 
@@ -19,19 +17,19 @@ ENV HEAP_XMX **DEFAULT**
 # if used within Cluster select "Collector", "MOM" or "CDV"
 ENV CLUSTER_ROLE **NONE**
 
-#RUN wget ${TRUSS_URL}/${INTROSCOPE_BUILD}/introscope${INTROSCOPE_VERSION}${ACC_PACKAGE}
-#RUN tar xvopf ${ACC_PACKAGE}### End for new Introscope version
-
-ADD SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
-ADD ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
 COPY ${INTROSCOPE_OSGI} /opt/introscope-install/${INTROSCOPE_OSGI}
-ADD eula-osgi/eula.txt /opt/introscope-install/eula-osgi/eula.txt
-ADD eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
-ADD startup.sh /opt/introscope-install/startup.sh
-#ADD addons /opt/introscope-install/addons
-
+COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
+COPY eula-osgi/eula.txt /opt/introscope-install/eula-osgi/eula.txt
+COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
+COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
+COPY startup.sh /opt/introscope-install/startup.sh
+#COPY addons /opt/introscope-install/addons
 RUN chmod +x startup.sh
+
 RUN java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
+RUN rm ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
+
+WORKDIR ${INTROSCOPE_HOME}
 
 # Port used by Enterprise Manager to listen for incoming connections.
 EXPOSE 5001
