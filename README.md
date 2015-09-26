@@ -7,14 +7,56 @@ This project hosts docker (https://www.docker.com/) images build for the APM sol
 - Introscope Enterprise Manager database using Postgresql
 - An Introscope sample application (small EPAgent) for demonstration purposes
 
-This version support Introscope version 10.0. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
+This version supports Introscope version 10.0. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
 
-The current idea is to have single-process containers, thus the enterprise manager database and the web interface are own images. As docker containers are very light-weight, this is no overhead.
+The current idea is to have single-process containers, thus the Enterprise Manager, WebView and the APM postgres database are separate images. As docker containers are very light-weight, this is no overhead.
+
+### Prerequisites
+- Install Docker (or boot2docker for Mac OSX or Windows): https://docs.docker.com/installation/
+- Install Docker Compose: https://docs.docker.com/compose/install/
+
+## Run CA APM in docker containers
+
+There are two options:
+1. Download docker images from an internal docker registry. This amounts to ~3GB of downloads from a VM in the CA network. You have to add a docker startup property and restart docker in order to access the insecure internal registry.
+2. Build the docker containers yourself. a script will download the necessary files for you. You can also copy the files needed to respective subdirectories.
+
+Both options are described below:
+
+## Run docker images
+### Instruct docker to trust our internal registry
+This tells docker to trust the self-signed certificate of the internal registry.
+
+#### On Linux
+1. Run
+```
+sudo mkdir -p /etc/docker/certs.d/apm-docker-registry.ca.com:5000
+sudo wget 'https://cawiki.ca.com/download/attachments/729866722/ca.crt?version=1&modificationDate=1437193573915&api=v2' -O /etc/docker/certs.d/apm-docker-registry.ca.com:5000/ca.crt`
+```
+2. Restart docker: this is usually `service docker stop && service docker start`
+
+#### On OSX or Windows with boot2docker
+1. First run `boot2docker ssh "echo $'EXTRA_ARGS=\"--insecure-registry bleep:5000\"' | sudo tee -a /var/lib/boot2docker/profile && sudo /etc/init.d/docker restart"`
+2. Run the commands from step 1 above inside the boot2docker vm
+3. Restart boot2docker: `boot2docker stop && boot2docker up`
+
+### Test access to docker registry
+
+Run `(sudo) docker pull apm-docker-registry.ca.com:5000/hello-world`
+
+If you get an error like
+```
+FATA[0001] Error response from daemon: v1 ping attempt failed with error: Get https://apm-docker-registry:5000/v1/_ping: tls: oversized record received with length 20527. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry apm-docker-registry:5000` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/apm-docker-registry:5000/ca.crt
+```
+you have not set up docker correctly to trust the certficate of the registry. Repeat the steps above and make sure to restart docker.
+
+### Download and run docker images
+Run `docker-compose up -d`. This will download the images from the docker registry and start three containers for the EM, WebView and APM DB respectively.
 
 ## Quick start with docker-compose
 1. place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".
-
 2. Run "sudo docker-compose -f docker-compose-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
+
 
 3. Access the introscope webview at localhost:8080
 
@@ -45,7 +87,7 @@ The project already provides many docker-compose definition files. Each definiti
 The docker image supports to start an enterprise manager as Standalone, as Collector, as MOM or as CDV. Use the environment variable "CLUSTER_ROLE" and set it to "CDV", "MOM", "Collector" or "Standalone" (with standalone being the default).
 
 ### Linking Collectors
-For MOMs and CDVs it is necessary to configure the collectors that they are referring to. This is realized by Docker links.
+For MOMs and CDVs it is necessary to configure the collectors that they are referring to. This is realized by docker links.
 
 As the enterprise manager also links its database via docker links, collectors being linked need to be differentiated. This is currently realized by having a naming scheme for collector links. For each collector link, the link alias needs to be in the format em[number], where number starts with 1 and is a continuously increasing integer.
 
@@ -102,7 +144,7 @@ Run      | Execute run-default-em-container.sh (or use docker-compose - recommen
 
 ## Enterprise Manager database image
 
-This image is built with the idea that the ports are not provided to the open (no -P flag for starting the container). Docker links will allow the enterprise manager to access the database nonetheless.
+This image is built with the idea that the ports are not provided to the open (no -P flag for starting the container). docker links will allow the enterprise manager to access the database nonetheless.
 
 Data is currently written to the "postgres" schema with the postgres user. As nobody else should use this database I expect this to be fine and it makes it easier for me as I did not have to create users and schematas.
 
@@ -134,7 +176,7 @@ Run      | Execute run-default-sample-container.sh (or use docker-compose - reco
 
 
 ## Locking at the data inside the containers (e.g. logs)
-If you like you can also map local folders (volumes), but I dont like this approach as this hinders portability, and most of the time it is not even necessary, as docker is great at providing access to them already. What I usually do is to connect to the container with either
+If you like you can also map local folders (volumes), but I don't like this approach as this hinders portability, and most of the time it is not even necessary, as docker is great at providing access to them already. What I usually do is to connect to the container with either
 ```
 docker logs [container-name] (to see all log output written to system out)
 ```
