@@ -6,8 +6,7 @@ INTROSCOPE_BUILD=10.1.0-ISCP/build-990014\(${INTROSCOPE_VERSION}\)
 TRUSS_URL=http://truss.ca.com/builds/InternalBuilds
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
-#INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
-INTROSCOPE_OSGI=osgiPackages.v10.1.0.0.unix.tar
+INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 SUDO=
 
 if [ ! -e $INTROSCOPE_BIN ] ; then

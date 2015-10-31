@@ -98,7 +98,7 @@ silentInstallChosenFeatures=Enterprise Manager,ProbeBuilder
 #    Example Windows value: C:\\osgiPackages.v<x.y>.windows.zip
 #    Example Unix value:    /osgiPackages.v<x.y>.unix.tar
 #            where <x.y> should be a valid version string.
-externalComponentPackage=osgiPackages.v10.1.0.13.unix.tar
+externalComponentPackage=osgiPackages.v10.1.0.15.unix.tar
 
 # If the above chosen features list includes Enterprise Manager or WebView,
 # specify the location of the external component library's End User

@@ -6,12 +6,12 @@ WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
 ENV INTROSCOPE_VERSION=10.1.0.15
-ENV INTROSCOPE_BUILD=10.1.0-ISCP/build-990012(${INTROSCOPE_VERSION})/introscope\(${INTROSCOPE_VERSION}\)
+ENV INTROSCOPE_BUILD=10.1.0-ISCP/build-990014(${INTROSCOPE_VERSION})/introscope\(${INTROSCOPE_VERSION}\)
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
 ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
-ENV INTROSCOPE_OSGI=osgiPackages.v10.1.0.0.unix.tar
+ENV INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 
 ENV HEAP_XMX **DEFAULT**
 
