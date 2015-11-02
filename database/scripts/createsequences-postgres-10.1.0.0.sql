@@ -413,4 +413,7 @@ ALTER SEQUENCE sq_appmap_vertices owned by appmap_id_mappings.vertex_id;
 CREATE SEQUENCE seq_appmap_settings MINVALUE 1;
 ALTER SEQUENCE seq_appmap_settings owned by appmap_settings.id;
 
+CREATE SEQUENCE seq_appmap_api_key_id MINVALUE 1;
+ALTER SEQUENCE seq_appmap_api_key_id owned by appmap_api_keys.id;
+
 -- /appmap

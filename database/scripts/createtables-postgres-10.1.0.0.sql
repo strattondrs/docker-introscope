@@ -8374,4 +8374,21 @@ CREATE TABLE appmap_settings (
         PRIMARY KEY(id)
 );
 
+CREATE TABLE appmap_model_vertices (
+        external_id VARCHAR(1024) PRIMARY KEY,
+        update_time TIMESTAMP NOT NULL,
+        data TEXT
+);
+
+CREATE TABLE appmap_api_keys(
+		id INTEGER NOT NULL,
+		username VARCHAR(256) NOT NULL,
+		date_created TIMESTAMP NOT NULL,
+		date_expired TIMESTAMP,
+		hashed_token CHAR(64) NOT NULL,
+		description VARCHAR(256),
+		PRIMARY KEY(id)
+);
+
+
 -- /appmap

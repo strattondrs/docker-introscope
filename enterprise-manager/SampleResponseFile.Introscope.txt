@@ -418,7 +418,7 @@ chosenDatabaseIsOracle=false
 
 dbHost=DATABASE_URL
 dbPort=5432
-dbName=postgres
+dbName=cemdb
 dbUser=postgres
 dbPassword=
 

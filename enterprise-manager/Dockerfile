@@ -6,7 +6,6 @@ WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
 ENV INTROSCOPE_VERSION=10.1.0.15
-ENV INTROSCOPE_BUILD=10.1.0-ISCP/build-990012(${INTROSCOPE_VERSION})/introscope\(${INTROSCOPE_VERSION}\)
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
@@ -22,12 +21,13 @@ COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
 COPY eula-osgi/eula.txt /opt/introscope-install/eula-osgi/eula.txt
 COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
 COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
-COPY startup.sh /opt/introscope-install/startup.sh
-#COPY addons /opt/introscope-install/addons
-RUN chmod +x startup.sh
 
 RUN java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
 RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
+
+COPY startup.sh /opt/introscope-install/startup.sh
+#COPY addons /opt/introscope-install/addons
+RUN chmod +x startup.sh
 
 WORKDIR ${INTROSCOPE_HOME}
 

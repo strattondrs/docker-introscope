@@ -93,6 +93,9 @@ if [ -n "${HEAP_XMX}" ] ; then
 	sed -i s/Xmx1024m/Xmx${HEAP_XMX}/g ${INTROSCOPE_HOME}/Introscope_Enterprise_Manager.lax
 fi
 
+# increase PermGen
+sed -i 's/lax.nl.java.option.additional=/lax.nl.java.option.additional=-XX:MaxPermSize=256m /g' ${INTROSCOPE_HOME}/Introscope_Enterprise_Manager.lax
+
 # Check the clustering role
 if [ "${CLUSTER_ROLE}" == "**NONE**" ] ; then
   echo "Starting the Enterprise Manager in Standalone mode"

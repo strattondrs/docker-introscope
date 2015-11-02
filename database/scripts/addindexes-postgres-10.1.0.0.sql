@@ -447,5 +447,7 @@ CREATE INDEX appmap_edges_fk3_idx ON appmap_edges(transaction_id);
 
 CREATE INDEX appmap_settings_user_id_idx ON appmap_settings(user_id);
 CREATE INDEX appmap_settings_type_idx ON appmap_settings(type, deleted_at);
+
+CREATE INDEX appmap_model_vertices_idx ON appmap_model_vertices(update_time DESC);
 -- /appmap
 

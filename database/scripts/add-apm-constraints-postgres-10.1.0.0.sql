@@ -70,7 +70,8 @@ ALTER TABLE apm_vertex_logical_equivalence
 	  ADD CONSTRAINT apm_to_vertex_id_fkey FOREIGN KEY (to_vertex_id)
 	      REFERENCES apm_vertex (id) MATCH SIMPLE
 	      ON UPDATE NO ACTION ON DELETE CASCADE;      
-	      
+ALTER TABLE appmap_api_keys
+    ADD CONSTRAINT appmap_api_keys_unique UNIQUE(hashed_token);
 	      
 
       

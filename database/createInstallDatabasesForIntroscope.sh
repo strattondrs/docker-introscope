@@ -5,7 +5,11 @@
 final_script=/docker-entrypoint-initdb.d/installDatabasesForIntroscope.sh
 script_dir=scripts
 dbversion=10.1.0.0
-sql_files=( $script_dir/createtables-postgres-$dbversion.sql $script_dir/createsequences-postgres-$dbversion.sql $script_dir/addindexes-postgres-$dbversion.sql $script_dir/addconstraints-postgres-$dbversion.sql $script_dir/addviews-postgres-$dbversion.sql $script_dir/quartz-1.5.1-postgres.sql $script_dir/defaults-postgres-$dbversion.sql $script_dir/initdb-postgres-$dbversion.sql $script_dir/procedures-postgres-$dbversion.sql $script_dir/create-apm-tables-postgres-$dbversion.sql $script_dir/create-apm-sequences-postgres-$dbversion.sql $script_dir/add-apm-indexes-postgres-$dbversion.sql $script_dir/add-apm-constraints-postgres-$dbversion.sql $script_dir/apm-defaults-postgres-$dbversion.sql)
+sql_files=( $script_dir/initdb-postgres-$dbversion.sql $script_dir/createtables-postgres-$dbversion.sql $script_dir/createsequences-postgres-$dbversion.sql $script_dir/addindexes-postgres-$dbversion.sql $script_dir/add-apm-constraints-postgres-$dbversion.sql $script_dir/droptables-postgres-$dbversion.sql $script_dir/quartz-1.5.1-postgres.sql)
+
+# $script_dir/addviews-postgres-$dbversion.sql  $script_dir/defaults-postgres-$dbversion.sql $script_dir/initdb-postgres-$dbversion.sql
+# $script_dir/procedures-postgres-$dbversion.sql $script_dir/create-apm-tables-postgres-$dbversion.sql $script_dir/create-apm-sequences-postgres-$dbversion.sql
+# $script_dir/add-apm-indexes-postgres-$dbversion.sql $script_dir/add-apm-constraints-postgres-$dbversion.sql $script_dir/apm-defaults-postgres-$dbversion.sql)
 # $script_dir/apm-procedures-postgres-$dbversion.sql --> contains pruning procedure but won't work with this script
 # removed $script_dir/add-apm-pruning-function-postgres-$dbversion.sql --> not available for 10.0.0.12
 
@@ -17,23 +21,23 @@ fi
 echo "#!/bin/bash" >> $final_script
 
 echo "# create users and databases" >> $final_script
-echo "gosu postgres postgres --single -jE <<- EOSQL" >> $final_script
+echo 'psql --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<- EOSQL' >> $final_script
 echo "CREATE USER admin WITH PASSWORD 'wily';" >> $final_script
 echo "EOSQL" >> $final_script
 echo "echo" >> $final_script
 
-echo "gosu postgres postgres --single -jE <<- EOSQL" >> $final_script
+echo 'psql --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<- EOSQL' >> $final_script
 echo "CREATE DATABASE cemdb OWNER admin;" >> $final_script
 echo "EOSQL" >> $final_script
 echo "echo" >> $final_script
 
-echo "gosu postgres postgres --single -jE <<- EOSQL" >> $final_script
+echo 'psql --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<- EOSQL' >> $final_script
 echo "GRANT ALL PRIVILEGES ON DATABASE cemdb TO admin;" >> $final_script
 echo "EOSQL" >> $final_script
 echo "echo" >> $final_script
 
 echo "# read all sql files and add them in a single line in one single postgres execution" >> $final_script
-echo "gosu postgres postgres --single <<- EOSQL" >> $final_script
+echo 'psql --username "$POSTGRES_DB" --dbname "$POSTGRES_DB" <<- EOSQL' >> $final_script
 
 # now it is getting a bit ugly and linux/unix pros can most certainly improve this solution quite a bit. Feedback (with explanation) is always welcome - i am not a bash crack ;). What we need to do is to combine all
 # necessary sql queries in one line (else single execution on postgres is not possible - at least that is what I read, and yes i tried, it is not possible ;)).
