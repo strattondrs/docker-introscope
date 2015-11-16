@@ -419,8 +419,8 @@ chosenDatabaseIsOracle=false
 dbHost=DATABASE_URL
 dbPort=5432
 dbName=cemdb
-dbUser=postgres
-dbPassword=
+dbUser=admin
+dbPassword=wily
 
 # Set the following set of properties when installing the database (in addition to properties above).
 
