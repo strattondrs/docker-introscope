@@ -117,6 +117,14 @@ else
   echo "Unknown Cluster Flag ${CLUSTER_ROLE} - starting in Standalone mode"
 fi
 
+if [ "${REST_API_ENABLE}" == "TRUE" ] ; then
+  echo "Enabling REST API"
+  sed -i 's/introscope.public.restapi.enabled=false/introscope.public.restapi.enabled=true/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
+  sed -i 's/log4j.logger.Manager.AppMap.PublicApi=INFO,console,logfile/log4j.logger.Manager.AppMap.PublicApi=INFO,logfile/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
+  sed -i 's/#introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
+  cd ${INTROSCOPE_HOME}/config/internal/server
+  keytool -importcert -keystore keystore -alias jettyssl -file /opt/introscope-install/jettyssl.crt -storepass password
+fi
 
 
 # now we correctly set everything and startup the enterprise manager.

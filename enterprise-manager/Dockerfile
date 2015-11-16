@@ -26,6 +26,9 @@ RUN java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
 RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
 
 COPY startup.sh /opt/introscope-install/startup.sh
+COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml
+COPY jettyssl.crt ${INTROSCOPE_HOME}/config/internal/server/jettyssl.crt
+
 #COPY addons /opt/introscope-install/addons
 RUN chmod +x startup.sh
 
@@ -35,6 +38,8 @@ WORKDIR ${INTROSCOPE_HOME}
 EXPOSE 5001
 # Port used by Enterprise Manager to serve web applications.
 EXPOSE 8081
+# Port used by Enterprise Manager public REST API
+EXPOSE 8444
 
 
 VOLUME ${INTROSCOPE_HOME}/data
