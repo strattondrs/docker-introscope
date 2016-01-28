@@ -7,7 +7,6 @@ TRUSS_URL=http://truss.ca.com/builds/InternalBuilds
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
-SUDO=
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
 	if [ -e ../enterprise-manager/$INTROSCOPE_BIN ]; then
@@ -28,10 +27,5 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	if [ "$(id -u)" != "0" ]; then
-		if [ "$(uname)" != "Darwin" ]; then
-	    SUDO=sudo
-	  fi
-	fi
-	$SUDO docker build -t apm-webview .
+	docker build -t apm-webview .
 fi
