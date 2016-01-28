@@ -27,11 +27,13 @@ RUN rm -f ${INTROSCOPE_BIN} ${INTROSCOPE_OSGI}
 
 COPY startup.sh /opt/introscope-install/startup.sh
 COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml
-COPY jettyssl.crt ${INTROSCOPE_HOME}/config/internal/server/jettyssl.crt
 
 #COPY addons /opt/introscope-install/addons
 RUN chmod +x startup.sh
 
+WORKDIR ${INTROSCOPE_HOME}/config/internal/server
+RUN keytool -genkey -keyalg RSA -alias jettyssl -keystore keystore -storepass password -keypass password -validity 7300 -dname "CN=docker-em.ca.com" \
+  && keytool -export -alias jettyssl -keystore keystore -storepass password -file jettyssl.crt
 WORKDIR ${INTROSCOPE_HOME}
 
 # Port used by Enterprise Manager to listen for incoming connections.
