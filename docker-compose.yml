@@ -7,7 +7,7 @@
 #
 
 em:
-  image: apm-docker-registry.ca.com:5000/apm-em
+  image: apm-em
   links:
     - db:db
   ports:
@@ -21,10 +21,10 @@ em:
     - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
 db:
-  image: apm-docker-registry.ca.com:5000/apm-postgres
+  image: apm-postgres
 
 webview:
-  image: apm-docker-registry.ca.com:5000/apm-webview
+  image: apm-webview
   links:
     - em:em
   ports:
