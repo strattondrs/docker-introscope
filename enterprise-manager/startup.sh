@@ -65,7 +65,7 @@ if [ ! -f tess-db-cfg-orig.xml ]
 		cp ${INTROSCOPE_HOME}/config/tess-db-cfg.xml tess-db-cfg-orig.xml
 fi
 cp tess-db-cfg-orig.xml ${INTROSCOPE_HOME}/config/tess-db-cfg.xml
-sed -i s/DATABASE_URL/${DB_PORT_5432_TCP_ADDR}/g ${INTROSCOPE_HOME}/config/tess-db-cfg.xml
+sed -i s/DATABASE_URL/db/g ${INTROSCOPE_HOME}/config/tess-db-cfg.xml
 
 # install addons
 if [ -d /opt/introscope-install/addons/em ] ; then
@@ -123,7 +123,7 @@ if [ "${REST_API_ENABLE}" == "TRUE" ] ; then
   sed -i 's/log4j.logger.Manager.AppMap.PublicApi=INFO,console,logfile/log4j.logger.Manager.AppMap.PublicApi=INFO,logfile/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
   sed -i 's/#introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/introscope.enterprisemanager.webserver.jetty.configurationFile=em-jetty-config.xml/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
   cd ${INTROSCOPE_HOME}/config/internal/server
-  keytool -importcert -keystore keystore -alias jettyssl -file /opt/introscope-install/jettyssl.crt -storepass password
+  keytool -importcert -noprompt -keystore keystore -alias jettyssl -file jettyssl.crt -storepass password
 fi
 
 
