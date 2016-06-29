@@ -14,7 +14,7 @@
 
 
 cdv:
-  build: enterprise-manager
+  image: apm-em
   links:
     - cdvdb:db
     - collector1:em1
@@ -24,17 +24,17 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  build: database
+  image: apm-postgres
 
 cdvwebview:
-  build: webview
+  image: webview
   links:
     - cdv:em
   ports:
     - "8080:8080"
 
 collector1:
-  build: enterprise-manager
+  image: apm-em
   links:
     - collector1db:db
   environment:
@@ -42,15 +42,15 @@ collector1:
     - CLUSTER_ROLE=Collector
 
 collector1db:
-  build: database
+  image: apm-database
 
 sample1:
-  build: sample
+  image: apm-sample
   links:
     - collector1:em
 
 collector2:
-  build: enterprise-manager
+  image: apm-em
   links:
     - collector2db:db
   environment:
@@ -58,9 +58,9 @@ collector2:
     - CLUSTER_ROLE=Collector
 
 collector2db:
-  build: database
+  image: apm-database
 
 sample2:
-  build: sample
+  image: apm-sample
   links:
     - collector2:em

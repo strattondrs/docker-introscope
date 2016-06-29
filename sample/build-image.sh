@@ -10,5 +10,5 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t stefansiegl/introscope-sample .
+	docker build -t apm-sample .
 fi

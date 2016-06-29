@@ -8,7 +8,7 @@
 #
 
 em:
-  build: enterprise-manager
+  image: apm-em
   links:
     - db:db
   ports:
@@ -21,16 +21,16 @@ em:
     - ~/mm:/root/Introscope/config/modules
 
 db:
-  build: database
+  image: apm-postgres
 
 webview:
-  build: webview
+  image: apm-webview
   links:
     - em:em
   ports:
     - "8080:8080"
 
 sample:
-  build: sample
+  image: apm-sample
   links:
     - em:em
