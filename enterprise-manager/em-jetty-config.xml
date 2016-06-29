@@ -41,16 +41,18 @@
         </Set>
         -->
         <!-- List of accepted protocols. You can add or remove any individual protocols (under <Item>) but do not comment out the whole set as EM start up will fail -->
-		<!-- SSLv2Hello can be added for compatibility purpose when using SUN/Oracle JVM-->
-		<!-- SSLv2Hello is not an accepted protocol for IBM JVM. Use SSL instead of SSLv2Hello if using IBM JVM -->
-		<!-- IBM JVM  also provides the following protocols which can be added below: SSL_TLSv2, SSL_TLS, SSL -->
-		<Set name="protocols">
+		    <!-- SSLv2Hello can be added for compatibility purpose when using SUN/Oracle JVM-->
+		    <!-- SSLv2Hello is not an accepted protocol for IBM JVM. Use SSL instead of SSLv2Hello if using IBM JVM -->
+		    <!-- IBM JVM  also provides the following protocols which can be added below: SSL_TLSv2, SSL_TLS, SSL -->
+		    <!--
+        <Set name="protocols">
           <Array type="java.lang.String">
             <Item>TLSv1.2</Item>
             <Item>TLSv1.1</Item>
             <Item>TLSv1</Item>
           </Array>
         </Set>
+        -->
         <Set name="ThreadPool">
           <New class="org.mortbay.thread.BoundedThreadPool">
             <Set name="minThreads">3</Set>
