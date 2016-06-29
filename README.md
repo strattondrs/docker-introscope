@@ -17,47 +17,13 @@ The current idea is to have single-process containers, thus the Enterprise Manag
 
 ## Run CA APM in docker containers
 
-There are two options:
-1. Download docker images from an internal docker registry. This amounts to ~3GB of downloads from a VM in the CA network. You have to add a docker startup property and restart docker in order to access the insecure internal registry.
-2. Build the docker containers yourself. a script will download the necessary files for you. You can also copy the files needed to respective subdirectories.
-
-Both options are described below:
+Due to legal restrictions we currently cannot make Docker images available for download. Therefore you have to build the Docker images yourself. You can then publish them in an internal registry.
 
 ## Run docker images
-### Instruct docker to trust our internal registry
-This tells docker to trust the self-signed certificate of the internal registry.
-
-#### On Linux
-1. Run
-```
-sudo mkdir -p /etc/docker/certs.d/apm-docker-registry.ca.com:5000
-sudo wget 'https://cawiki.ca.com/download/attachments/729866722/ca.crt?version=1&modificationDate=1437193573915&api=v2' -O /etc/docker/certs.d/apm-docker-registry.ca.com:5000/ca.crt`
-```
-2. Restart docker: this is usually `service docker stop && service docker start`
-
-#### On OSX or Windows with boot2docker
-1. First run `boot2docker ssh "echo $'EXTRA_ARGS=\"--insecure-registry bleep:5000\"' | sudo tee -a /var/lib/boot2docker/profile && sudo /etc/init.d/docker restart"`
-2. Run the commands from step 1 above inside the boot2docker vm
-3. Restart boot2docker: `boot2docker stop && boot2docker up`
-
-### Test access to docker registry
-
-Run `(sudo) docker pull apm-docker-registry.ca.com:5000/hello-world`
-
-If you get an error like
-```
-FATA[0001] Error response from daemon: v1 ping attempt failed with error: Get https://apm-docker-registry:5000/v1/_ping: tls: oversized record received with length 20527. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry apm-docker-registry:5000` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/apm-docker-registry:5000/ca.crt
-```
-you have not set up docker correctly to trust the certficate of the registry. Repeat the steps above and make sure to restart docker.
-
-### Download and run docker images
-Run `docker-compose up -d`. This will download the images from the docker registry and start three containers for the EM, WebView and APM DB respectively.
 
 ## Quick start with docker-compose
-1. place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".
-2. Run "sudo docker-compose -f docker-compose-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
-
-
+1. Place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".
+2. Run "sudo docker-compose -f docker-compose--with-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
 3. Access the introscope webview at localhost:8080
 
 ## Quick start without docker-compose
@@ -186,6 +152,38 @@ or you can even get our own shell on the container by
 ```
 docker exec -it [container-name] /bin/sh
 ```
+
+## Using an internal registry
+
+### Instruct docker to trust our internal registry
+This tells docker to trust the self-signed certificate of the internal registry.
+
+#### On Linux
+1. Run
+```
+sudo mkdir -p /etc/docker/certs.d/apm-docker-registry.ca.com:5000
+sudo wget 'https://cawiki.ca.com/download/attachments/729866722/ca.crt?version=1&modificationDate=1437193573915&api=v2' -O /etc/docker/certs.d/apm-docker-registry.ca.com:5000/ca.crt`
+```
+2. Restart docker: this is usually `service docker stop && service docker start`
+
+#### On OSX or Windows with boot2docker
+1. First run `boot2docker ssh "echo $'EXTRA_ARGS=\"--insecure-registry bleep:5000\"' | sudo tee -a /var/lib/boot2docker/profile && sudo /etc/init.d/docker restart"`
+2. Run the commands from step 1 above inside the boot2docker vm
+3. Restart boot2docker: `boot2docker stop && boot2docker up`
+
+### Test access to docker registry
+
+Run `(sudo) docker pull apm-docker-registry.ca.com:5000/hello-world`
+
+If you get an error like
+```
+FATA[0001] Error response from daemon: v1 ping attempt failed with error: Get https://apm-docker-registry:5000/v1/_ping: tls: oversized record received with length 20527. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry apm-docker-registry:5000` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/apm-docker-registry:5000/ca.crt
+```
+you have not set up docker correctly to trust the certficate of the registry. Repeat the steps above and make sure to restart docker.
+
+### Download and run docker images
+Run `docker-compose up -d`. This will download the images from the docker registry and start three containers for the EM, WebView and APM DB respectively.
+
 
 
 ## Legal notice: binaries not included
