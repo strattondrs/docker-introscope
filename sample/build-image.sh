@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 introscopeinstallfile="EPAgent9.7.1.16unix.tar"
 errors=false
@@ -10,5 +10,5 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-sample .
+	docker build -t apm-sample:9.7 .
 fi

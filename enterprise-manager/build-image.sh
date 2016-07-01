@@ -1,23 +1,19 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.1.0.15
-INTROSCOPE_BUILD=10.1.0-ISCP/build-990014\(${INTROSCOPE_VERSION}\)
-TRUSS_URL=http://truss.ca.com/builds/InternalBuilds
+INTROSCOPE_VERSION=10.2.0.27
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
-INTROSCOPE_OSGI=osgiPackages.v${INTROSCOPE_VERSION}.unix.tar
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
-	wget ${TRUSS_URL}/${INTROSCOPE_BUILD}/introscope${INTROSCOPE_VERSION}/introscope${INTROSCOPE_VERSION}other.tar
   tar xvopf introscope${INTROSCOPE_VERSION}other.tar ${INTROSCOPE_BIN}
 fi
 
-if [ ! -e $INTROSCOPE_OSGI ] ; then
-	wget ${TRUSS_URL}/${INTROSCOPE_BUILD}/opensource/${INTROSCOPE_OSGI}
+if [ ! -e $INTROSCOPE_BIN ] ; then
+  echo "$INTROSCOPE_BIN is missing. Please download $INTROSCOPE_TAR from support.ca.com and place it in this directory."
 fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-em .
+	docker build -t apm-em:10.2 .
 fi

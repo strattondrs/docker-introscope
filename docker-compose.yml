@@ -7,7 +7,7 @@
 #
 
 em:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - db:db
   ports:
@@ -21,10 +21,10 @@ em:
     - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
 db:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 webview:
-  image: apm-webview
+  image: apm-webview:10.2
   links:
     - em:em
   ports:

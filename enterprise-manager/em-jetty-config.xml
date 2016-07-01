@@ -21,10 +21,10 @@
   <Call name="addConnector">
     <Arg>
       <New class="com.wily.webserver.TrustingSslSocketConnector">
-        <Set name="validateCertificates">true</Set>
+        <Set name="validateCertificates">false</Set>
         <Set name="HeaderBufferSize">8192</Set>
         <Set name="RequestBufferSize">16384</Set>
-        <Set name="verifyHostnames">true</Set>
+        <Set name="verifyHostnames">false</Set>
         <Set name="port">8444</Set>
         <Set name="certAlias">jettyssl</Set>
         <Set name="keystore"><SystemProperty name="introscope.config" default="./config" />/internal/server/keystore</Set>

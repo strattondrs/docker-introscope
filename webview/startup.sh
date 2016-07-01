@@ -9,12 +9,16 @@ fi
 cp IntroscopeWebView-orig.properties ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 sed -i s/EM_HOST_MARKER/${EM_HOST}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 sed -i s/EM_PORT_MARKER/${EM_PORT}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
-sed -i s/{EM_HOST}:8081/${EM_HOST}:${EM_WEB_PORT}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
+sed -i s/EM_WEB_PORT_MARKER/${EM_WEB_PORT}/g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
+sed -i s#rest.base=http://{EM_HOST}:{EM_WEBSERVER_PORT}/apm/appmap#rest.base=http://${EM_HOST}:${EM_WEB_PORT}/apm/appmap#g ${INTROSCOPE_HOME}/config/IntroscopeWebView.properties
 
 # activate Java agent
 sed -i "s#lax.nl.java.option.additional=#lax.nl.java.option.additional=-javaagent:./product/webview/agent/wily/Agent.jar -Dcom.wily.introscope.agentProfile=./product/webview/agent/wily/core/config/IntroscopeAgent.profile -Dcom.wily.introscope.wilyForWilyPrefix=com.wily -Djetty.home=./ #" ${INTROSCOPE_HOME}/Introscope_WebView.lax
-sed -i s/EM_HOST_MARKER/${EM_HOST}/g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
-sed -i s/EM_PORT_MARKER/${EM_PORT}/g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
+
+# workaround for agent defect: only IP or FQDN works, not hostname alone
+EM_IP_ADDRESS=`nslookup em | awk '/^Address/ { print $3 }' | sed -n '2{p;q}'`
+sed -i s#agentManager.url.1=localhost:5001#agentManager.url.1=${EM_IP_ADDRESS}:${EM_PORT}#g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
+#sed -i s#agentManager.url.1=localhost:5001#agentManager.url.1=${EM_HOST}:${EM-PORT}#g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
 
 
 # configure the heap

@@ -3,8 +3,8 @@
 # Introscope Silent Installation Response File
 #
 # Sample Response File
-# CA Wily Introscope(R) Version 10.1.Node Release 10.1.0.Node
-# Copyright (c) 2015 CA. All Rights Reserved.
+# CA Wily Introscope(R) Version 10.2.0 Release 10.2.0.27
+# Copyright (c) 2016 CA. All Rights Reserved.
 # Introscope(R) is a registered trademark of CA.
 #
 ##############################################################################
@@ -66,17 +66,17 @@ ca-eulaFile=eula-introscope/ca-eula.txt
 # Example Unix install directory: /IntroscopeSilentInstall/
 # Left blank, this property will default to one of the following values:
 # On Windows...
-#    C:\\Program Files\\CA APM\\Introscope10.1.0.Node\\
+#    C:\\Program Files\\CA APM\\Introscope10.2.0.27\\
 #        (Exact name and drive letter of program files directory may vary
 #        depending on OS configuration)
 # On Unix...
-#    /root/Introscope10.1.0.Node/
+#    /root/Introscope10.2.0.27/
 #        (Under the logged-in-end-user's home directory. Exact directory may vary
 #        depending on user account.)
 USER_INSTALL_DIR=/opt/CA/Introscope
 
 # Introscope features to install. Must be a comma-delimited list.
-# Example: Enterprise Manager,WebView,ProbeBuilder
+# Example: Enterprise Manager,WebView
 # The APM database stores Business Services and Application Dependency Map information.
 # This database is deployed on a PostgreSQL database.
 # If you want to install APM database only, use,
@@ -85,38 +85,6 @@ USER_INSTALL_DIR=/opt/CA/Introscope
 # Ensure that you also specify databaseDir, dbAdminUser and dbAdminPassword properties
 # below if you want to install APM database.
 silentInstallChosenFeatures=WebView
-
-# If the above chosen features list includes Enterprise Manager or WebView,
-# specify the location of the external component library package (zip or tar).
-# The external component library package can be downloaded from:
-# http://opensrcd.ca.com/ips/osgi
-# The package is required in order for these features to run.
-# If no package is specified, installation cannot be performed.
-# The package location may be specified with an absolute or relative path.
-# Relative paths will be resolved relative to the installer launch directory.
-# On Windows, backslashes must be escaped.
-#    Example Windows value: C:\\osgiPackages.v<x.y>.windows.zip
-#    Example Unix value:    /osgiPackages.v<x.y>.unix.tar
-#            where <x.y> should be a valid version string.
-externalComponentPackage=osgiPackages.v10.1.0.15.unix.tar
-
-# If the above chosen features list includes Enterprise Manager or WebView,
-# specify the location of the external component library's End User
-# License Agreement (EULA). This agreement must be acknowledged and accepted
-# by the end user in order for installation to proceed. To acknowledge
-# and accept the agreement:
-#   - open it in a text editor and read the terms and conditions
-#   - edit the end of the file to indicate acceptance of the license
-#   - save the changes
-#   - specify the agreement's location using the property below
-# The EULA location may be specified with an absolute or relative path.
-# Relative paths will be resolved relative to the installer launch directory.
-# On Windows, backslashes must be escaped.
-#    Example Windows value: C:\\Documents and Settings\\eula.txt
-#    Example Unix value:    /home/myuser/eula.txt
-eulaFile=eula-osgi/eula.txt
-
-
 
 ########################
 # Upgrade Settings
@@ -181,6 +149,14 @@ emAdminPassword=
 # password for Enterprise Manager Guest account
 # leave this entry blank to use default
 emGuestPassword=
+
+
+#############################################
+# Enterprise Manager Enterprise Team Center Master Settings
+#---------------------------------------
+shouldEnableTeamCenterMaster=false
+
+
 
 
 #############################################
@@ -399,7 +375,9 @@ emAsServiceDisplayName=Introscope Enterprise Manager
 # If you are using both Hot Failover and the CEM UI,
 # add the following switch when starting the Secondary Introscope Enterprise Manager (or second Primary),
 # -Dosgi.clean=false
-#emLaxNlJavaOptionAdditional=-Xms1024m -Xmx1024m -Djava.awt.headless=false -XX:MaxPermSize=256m -Dmail.mime.charset=UTF-8 -Dorg.owasp.esapi.resources=./config/esapi -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -showversion -XX:CMSInitiatingOccupancyFraction=50 -Xss512k
+# If you are installing on AIX (with JRE7 or earlier), add the following switch
+# -XX:MaxPermSize=256m
+#emLaxNlJavaOptionAdditional=-Xms1024m -Xmx1024m -Djava.awt.headless=false -Dmail.mime.charset=UTF-8 -Dorg.owasp.esapi.resources=./config/esapi -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -showversion -XX:CMSInitiatingOccupancyFraction=50 -Xss512k
 
 
 #####################################################
@@ -418,9 +396,9 @@ chosenDatabaseIsOracle=false
 
 dbHost=DATABASE_URL
 dbPort=5432
-dbName=postgres
-dbUser=postgres
-dbPassword=
+dbName=cemdb
+dbUser=admin
+dbPassword=wily
 
 # Set the following set of properties when installing the database (in addition to properties above).
 
@@ -441,7 +419,7 @@ validateDatabase=false
 
 # set upgradeSchema to true if you want to upgrade schema from 4.5.0 or 5.0.0 to 9.0.5
 # Schema can be upgraded only on Linux and Windows.
-#upgradeSchema=true
+upgradeSchema=false
 
 # Oracle properties (set these if you are using Oracle database.)
 # Set 'useExistingSchemaForOracle' property to true if the schema already exists
@@ -465,7 +443,7 @@ oracleDbPassword=
 wvPort=8080
 wvEmHost=EM_HOST_MARKER
 wvEmPort=EM_PORT_MARKER
-
+wvEmWebPort=EM_WEB_PORT_MARKER
 
 ##########################################
 # WebView As Windows Service Settings
@@ -511,33 +489,6 @@ wvAsServiceDisplayName=Introscope WebView
 #  - false for Windows platforms
 #  - true for other UNIX and mainframe platforms
 #wvLaxNlJavaOptionAdditional=-Xms256m -Xmx1024m -Djava.awt.headless=false -Dorg.owasp.esapi.resources=./config/esapi -Dsun.java2d.noddraw=true -XX:PermSize=128m -XX:MaxPermSize=256m
-
-
-
-####################################
-# ProbeBuilder Install Settings
-#
-# =============================
-
-#########################################
-# ProbeBuilder Advanced JVM Settings
-#-----------------------------------
-#
-# These options should only be configured by advanced users.
-# If you are unsure of which values to enter, keep the defaults by
-# leaving these properties commented out.
-
-# Specify the path to the JVM that will be used to run the ProbeBuilder.
-# The path may be absolute, or relative to the Introscope home.
-# On Windows, backslashes must be escaped.
-# Example [Windows]: jre\\bin\\java.exe
-# Example [Unix]:    jre/bin/java
-#pbLaxNlCurrentVm=
-
-# Specify any desired command line arguments to be used by the
-# ProbeBuilder JVM.
-#pbLaxNlJavaOptionAdditional=-Xms32m -Xmx64m
-
 
 
 ###############################

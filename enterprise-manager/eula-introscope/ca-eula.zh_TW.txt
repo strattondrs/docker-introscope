@@ -271,16 +271,16 @@
 # 貴用戶同意其已閱讀並瞭解本授權，並且在以下鍵入 "accept" (接受) 後，表示接受其條款及條件。貴用戶亦同意本授權 (包括參照本合約之任何訂購單及在本合約後方所載明之第三方軟體之相關條款) 構成雙方針對本合約事項之完整協議，並同意本授權將取代貴用戶就本合約事項已取得之任何資訊，但本合約 (不包含下列第三人條款) 得以被授權人與 CA 共同簽署之書面合約取代之，以授與貴用戶使用產品之授權。本合約僅得由雙方授權代表所簽署之書面合約加以修改。
 #
 # = = = = =
-# ﻿CA Application Performance Management r. 10.1 (the “CA Software”)
-# The Introscope Software Product includes third-party software with the following additional terms and conditions:
+# ﻿CA Application Performance Management r. 10.2 (the "CA Software") Third Party Terms
 #
-# Following is a list of third-party software components and their third party terms required by licensors of various third party components used with the CA Software:
+# The following is a list of third-party software components and their third party terms required by licensors of various third party components used with the CA Software:
 #
 # ---------------------------------------------------------------------------------
-# Oracle Java Runtime Environment (JRE) Version 7 Update 21
+# Oracle Java Runtime Environment (JRE) 1.8.0_45
 # ---------------------------------------------------------------------------------
-# JRE v1.7
-# This Product is distributed with JRE v.1.7. Although the CA product does not use the Commercial Features, the license agreement requires that the following notice be presented. Use of the Commercial Features of the JRE for any commercial or production purpose requires a separate license from Oracle. 'Commercial Features' means those features identified Table 1-1 (Commercial Features In Java SE Product Editions) of the Software documentation accessible at http://www.oracle.com/technetwork/java/javase/documentation/index.html
+# JRE v.1.8
+# This Product is distributed with JRE v.1.8. Although the CA product does not use the Commercial Features, the license agreement requires that the following notice be presented. Use of the Commercial Features of the JRE for any commercial or production purpose requires a separate license from Oracle. 'Commercial Features' means those features identified Table 1-1 (Commercial Features In Java SE Product Editions) of the Software documentation accessible at http://www.oracle.com/technetwork/java/javase/documentation/index.html
+#
 # ---------------------
 # LsaUtility 1.0
 # ---------------------
@@ -294,12 +294,9 @@
 # No claim of suitability, guarantee, or any warranty whatsoever is provided. The software is provided "as-is".
 # The Article(s) accompanying the Work may not be distributed or republished without the Author's consent
 # This License is entered between You, the individual or other entity reading or otherwise making use of the Work licensed pursuant to this License and the individual or other entity which offers the Work under the terms of this License ("Author").
-#
 # License
 # THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CODE PROJECT OPEN LICENSE ("LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
-#
 # BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HEREIN, YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. THE AUTHOR GRANTS YOU THE RIGHTS CONTAINED HEREIN IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS. IF YOU DO NOT AGREE TO ACCEPT AND BE BOUND BY THE TERMS OF THIS LICENSE, YOU CANNOT MAKE ANY USE OF THE WORK.
-#
 # Definitions.
 # "Articles" means, collectively, all articles written by Author which describes how the Source Code and Executable Files for the Work may be used by a user.
 # "Author" means the individual or entity that offers the Work under the terms of this License.
@@ -327,7 +324,7 @@
 # You may distribute the Executable Files and Source Code only under the terms of this License, and You must include a copy of, or the Uniform Resource Identifier for, this License with every copy of the Executable Files or Source Code You distribute and ensure that anyone receiving such Executable Files and Source Code agrees that the terms of this License apply to such Executable Files and/or Source Code. You may not offer or impose any terms on the Work that alter or restrict the terms of this License or the recipients' exercise of the rights granted hereunder. You may not sublicense the Work. You must keep intact all notices that refer to this License and to the disclaimer of warranties. You may not distribute the Executable Files or Source Code with any technological measures that control access or use of the Work in a manner inconsistent with the terms of this License.
 # You agree not to use the Work for illegal, immoral or improper purposes, or on pages containing illegal, immoral or improper material. The Work is subject to applicable export laws. You agree to comply with all such laws and regulations that may apply to the Work after Your receipt of the Work.
 # Representations, Warranties and Disclaimer. THIS WORK IS PROVIDED "AS IS", "WHERE IS" AND "AS AVAILABLE", WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES OR CONDITIONS OR GUARANTEES. YOU, THE USER, ASSUME ALL RISK IN ITS USE, INCLUDING COPYRIGHT INFRINGEMENT, PATENT INFRINGEMENT, SUITABILITY, ETC. AUTHOR EXPRESSLY DISCLAIMS ALL EXPRESS, IMPLIED OR STATUTORY WARRANTIES OR CONDITIONS, INCLUDING WITHOUT LIMITATION, WARRANTIES OR CONDITIONS OF MERCHANTABILITY, MERCHANTABLE QUALITY OR FITNESS FOR A PARTICULAR PURPOSE, OR ANY WARRANTY OF TITLE OR NON-INFRINGEMENT, OR THAT THE WORK (OR ANY PORTION THEREOF) IS CORRECT, USEFUL, BUG-FREE OR FREE OF VIRUSES. YOU MUST PASS THIS DISCLAIMER ON WHENEVER YOU DISTRIBUTE THE WORK OR DERIVATIVE WORKS.
-# Indemnity. You agree to defend, indemnify and hold harmless the Author and the Publisher from and against any claims, suits, losses, damages, liabilities, costs, and expenses (including reasonable legal or attorneys’ fees) resulting from or relating to any use of the Work by You.
+# Indemnity. You agree to defend, indemnify and hold harmless the Author and the Publisher from and against any claims, suits, losses, damages, liabilities, costs, and expenses (including reasonable legal or attorneys' fees) resulting from or relating to any use of the Work by You.
 # Limitation on Liability. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE LAW, IN NO EVENT WILL THE AUTHOR OR THE PUBLISHER BE LIABLE TO YOU ON ANY LEGAL THEORY FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES ARISING OUT OF THIS LICENSE OR THE USE OF THE WORK OR OTHERWISE, EVEN IF THE AUTHOR OR THE PUBLISHER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 # Termination.
 # This License and the rights granted hereunder will terminate automatically upon any breach by You of any term of this License. Individuals or entities who have received Derivative Works from You under this License, however, will not have their licenses terminated provided such individuals or entities remain in full compliance with those licenses. Sections 1, 2, 6, 7, 8, 9, 10 and 11 will survive any termination of this License.
@@ -342,7 +339,7 @@
 #
 #
 #
-# 上次更新時間 2015-09-22
+# 上次更新時間 2016-01-12
 #
 # 於以下鍵入 "accept" (接受)，以接受上述之本合約條款及條件，並開始進行安裝程序。
 #

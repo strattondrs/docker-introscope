@@ -13,7 +13,7 @@
 # CDV
 
 cdv:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - cdvdb:db
     - collector1:em1
@@ -25,10 +25,10 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 cdvwebview:
-  image: apm-webview
+  image: apm-webview:10.2
   links:
     - cdv:em
   ports:
@@ -37,7 +37,7 @@ cdvwebview:
 # MOMs
 
 mom1:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - momdb1:db
     - collector1:em1
@@ -47,10 +47,10 @@ mom1:
     - CLUSTER_ROLE=MOM
 
 momdb1:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 momwebview1:
-  image: apm-webview
+  image: apm-webview:10.2
   links:
     - mom1:em
   ports:
@@ -58,7 +58,7 @@ momwebview1:
 
 
 mom2:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - momdb2:db
     - collector3:em1
@@ -68,10 +68,10 @@ mom2:
     - CLUSTER_ROLE=MOM
 
 momdb2:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 momwebview2:
-  image: apm-webview
+  image: apm-webview:10.2
   links:
     - mom2:em
   ports:
@@ -82,7 +82,7 @@ momwebview2:
 # Collectors
 
 collector1:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - collector1db:db
   environment:
@@ -90,15 +90,15 @@ collector1:
     - CLUSTER_ROLE=Collector
 
 collector1db:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 sample1:
-  image: apm-sample
+  image: apm-sample:9.7
   links:
     - collector1:em
 
 collector2:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - collector2db:db
   environment:
@@ -106,15 +106,15 @@ collector2:
     - CLUSTER_ROLE=Collector
 
 collector2db:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 sample2:
-  image: apm-sample
+  image: apm-sample:9.7
   links:
     - collector2:em
 
 collector3:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - collector3db:db
   environment:
@@ -122,15 +122,15 @@ collector3:
     - CLUSTER_ROLE=Collector
 
 collector3db:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 sample3:
-  image: apm-sample
+  image: apm-sample:9.7
   links:
     - collector3:em
 
 collector4:
-  image: apm-em
+  image: apm-em:10.2
   links:
     - collector4db:db
   environment:
@@ -138,9 +138,9 @@ collector4:
     - CLUSTER_ROLE=Collector
 
 collector4db:
-  image: apm-postgres
+  image: apm-postgres:10.2
 
 sample4:
-  image: apm-sample
+  image: apm-sample:9.7
   links:
     - collector4:em
