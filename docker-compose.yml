@@ -3,7 +3,7 @@
 # ------------
 #
 # This is a small test case that creates an enterprise manager with its database,
-# a webview.
+# a webview, and ACC Config Server.
 #
 
 em:
@@ -29,3 +29,9 @@ webview:
     - em:em
   ports:
     - "8082:8080"
+
+configserver:
+  image: "apm-configserver:10.2"
+  ports:
+    - "8443:8443"
+    - "8888:8888"

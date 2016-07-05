@@ -5,11 +5,12 @@ This project hosts docker (https://www.docker.com/) images build for the APM sol
 - Introscope Enterprise Manager (Standalone Mode, MOM Mode, Collector Mode, Cross-cluster viewer Mode)
 - Introscope WebView
 - Introscope Enterprise Manager database using Postgresql
+- APM Control Center (ACC) Configuration Server
 - An Introscope sample application (small EPAgent) for demonstration purposes
 
 This version supports Introscope version 10.1. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
 
-The current idea is to have single-process containers, thus the Enterprise Manager, WebView and the APM postgres database are separate images. As docker containers are very light-weight, this is no overhead.
+The current idea is to have single-process containers, thus the Enterprise Manager, WebView, Config Server and the APM postgres database are separate images. As docker containers are very light-weight, this is no overhead.
 
 ### Prerequisites
 - Install Docker (or boot2docker for Mac OSX or Windows): https://docs.docker.com/installation/
@@ -22,7 +23,7 @@ Due to legal restrictions we currently cannot make Docker images available for d
 ## Run docker images
 
 ## Quick start with docker-compose
-1. Place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".
+1. Place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".  The ACC Config Server requires acc-configserver-package.tar.
 2. Run "sudo docker-compose -f docker-compose--with-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
 3. Access the introscope webview at localhost:8080
 
@@ -42,6 +43,11 @@ Without docker-compose you have to build the images and run the containers yours
 6. Start the web view container by ./webview/run-default-webview-container.sh
 
 7. Access the introscope webview at localhost:8080
+
+8. Start the ACC Config Server container by ./configserver/run-default-configserver-container.sh
+
+9. Access the ACC Config Server UI at https://localhost:8443
+
 
 ## Using docker-compose
 
