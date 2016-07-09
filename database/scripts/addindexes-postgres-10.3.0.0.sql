@@ -446,3 +446,23 @@ CREATE INDEX appmap_settings_type_idx ON appmap_settings(type, deleted_at);
 CREATE INDEX appmap_model_vertices_idx ON appmap_model_vertices(update_time DESC);
 -- /appmap
 
+-- aca
+CREATE INDEX aca_user_searchable_attrib1_idx ON aca_user (searchable_attrib1);
+CREATE INDEX aca_user_searchable_attrib2_idx ON aca_user (searchable_attrib2);
+CREATE INDEX aca_user_searchable_attrib3_idx ON aca_user (searchable_attrib3);
+CREATE INDEX aca_user_searchable_attrib4_idx ON aca_user (searchable_attrib4);
+CREATE INDEX aca_user_searchable_attrib5_idx ON aca_user (searchable_attrib5);
+
+CREATE INDEX aca_group_searchable_attrib1_idx ON aca_group (searchable_attrib1);
+CREATE INDEX aca_group_searchable_attrib2_idx ON aca_group (searchable_attrib2);
+CREATE INDEX aca_group_searchable_attrib3_idx ON aca_group (searchable_attrib3);
+CREATE INDEX aca_group_searchable_attrib4_idx ON aca_group (searchable_attrib4);
+CREATE INDEX aca_group_searchable_attrib5_idx ON aca_group (searchable_attrib5);
+ 
+CREATE INDEX aca_user_group_group_id ON aca_user_group (group_id);
+
+CREATE UNIQUE INDEX aca_acl_ak1 ON aca_acl(service_provider_id, service_provider_instance_id, resource_id, group_id);
+CREATE UNIQUE INDEX aca_acl_ak2 ON aca_acl(service_provider_id, service_provider_instance_id, resource_id, user_id);
+ 
+CREATE INDEX aca_audit_update_time_idx ON aca_audit (update_time);
+-- /aca

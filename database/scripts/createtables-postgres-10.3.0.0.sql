@@ -8336,8 +8336,8 @@ CREATE TABLE appmap_vertices (
         start_time TIMESTAMP NOT NULL,
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
-        vertex_name VARCHAR(256),
-        business_service VARCHAR(256),
+        vertex_name VARCHAR(1024),
+        business_service VARCHAR(1024),
         gathered_attribs TEXT,
         other_attribs TEXT,
         PRIMARY KEY(vertex_id, start_time)
@@ -8404,3 +8404,69 @@ CREATE TABLE apm_secure_store(
 
 
 -- /appmap
+
+-- aca
+CREATE TABLE aca_user
+(
+  user_id character varying(256) not null,
+  realm_id character varying(256) not null,
+  searchable_attrib1 character varying(256) null,
+  searchable_attrib2 character varying(256) null,
+  searchable_attrib3 character varying(256) null,
+  searchable_attrib4 character varying(256) null,
+  searchable_attrib5 character varying(256) null,
+  attributes text null,
+  realm_attributes text null,
+  last_login_time timestamp without time zone NULL,
+  last_update timestamp without time zone NOT NULL,
+  CONSTRAINT aca_user_pk PRIMARY KEY (user_id)
+);
+
+CREATE TABLE aca_group
+(
+  group_id character varying(256) not null,
+  realm_id character varying(256) not null,
+  searchable_attrib1 character varying(256) null,
+  searchable_attrib2 character varying(256) null,
+  searchable_attrib3 character varying(256) null,
+  searchable_attrib4 character varying(256) null,
+  searchable_attrib5 character varying(256) null,
+  attributes text null,
+  realm_attributes text null,
+  last_update timestamp without time zone NOT NULL,
+  CONSTRAINT aca_group_pk PRIMARY KEY (group_id)
+);
+ 
+CREATE TABLE aca_user_group
+(
+  user_id character varying(256) not null,
+  group_id character varying(256) not null,
+  last_update timestamp without time zone NOT NULL,
+  CONSTRAINT aca_user_group_pk PRIMARY KEY (user_id, group_id)
+);
+ 
+CREATE TABLE aca_acl
+(
+  acl_id numeric not null,
+  service_provider_id character varying(256) NOT NULL,
+  service_provider_instance_id character varying(256) NOT NULL,
+  resource_id character varying(256) NOT NULL,
+  group_id character varying(256) NULL, 
+  user_id character varying(256) NULL, 
+  resource_type_id character varying(10) NOT NULL,
+  capabilities_allow text NULL,
+  capabilities_grant text NULL,
+  last_update timestamp without time zone NOT NULL,
+  CONSTRAINT aca_acl_pk PRIMARY KEY (acl_id),
+  CONSTRAINT aca_acl_user_xor_group CHECK ( ( group_id is null and user_id is not null ) or (group_id is not null and user_id is null) ),
+  CONSTRAINT aca_acl_resource_type_id CHECK ( resource_type_id = 'regex' or resource_type_id = 'literal' )
+);
+ 
+create table aca_audit(
+  update_time timestamp without time zone NOT NULL,
+  user_id character varying(256) NOT NULL,
+  table_name character varying(256) NOT NULL,
+  change_from text null,
+  change_to text null
+);
+-- /aca
