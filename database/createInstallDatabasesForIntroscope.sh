@@ -4,7 +4,7 @@
 
 final_script=/docker-entrypoint-initdb.d/installDatabasesForIntroscope.sh
 script_dir=scripts
-dbversion=10.2.0.0
+dbversion=10.3.0.0
 sql_files=($script_dir/createtables-postgres-$dbversion.sql $script_dir/createsequences-postgres-$dbversion.sql $script_dir/addindexes-postgres-$dbversion.sql $script_dir/create-apm-tables-postgres-$dbversion.sql $script_dir/create-apm-sequences-postgres-$dbversion.sql $script_dir/addconstraints-postgres-$dbversion.sql $script_dir/add-apm-indexes-postgres-$dbversion.sql $script_dir/add-apm-constraints-postgres-$dbversion.sql $script_dir/apm-defaults-postgres-$dbversion.sql $script_dir/addviews-postgres-$dbversion.sql $script_dir/defaults-postgres-$dbversion.sql $script_dir/initdb-postgres-$dbversion.sql $script_dir/procedures-postgres-$dbversion.sql $script_dir/quartz-1.5.1-postgres.sql)
 # $script_dir/apm-procedures-postgres-$dbversion.sql --> contains pruning procedure but won't work with this script
 # removed $script_dir/add-apm-pruning-function-postgres-$dbversion.sql --> not available for 10.0.0.12

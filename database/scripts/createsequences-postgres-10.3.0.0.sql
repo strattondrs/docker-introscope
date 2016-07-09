@@ -417,3 +417,8 @@ CREATE SEQUENCE seq_appmap_api_key_id MINVALUE 1;
 ALTER SEQUENCE seq_appmap_api_key_id owned by appmap_api_keys.id;
 
 -- /appmap
+
+-- aca
+CREATE SEQUENCE sq_aca_acl MINVALUE 1;
+ALTER SEQUENCE sq_aca_acl owned by aca_acl.acl_id;
+-- /aca

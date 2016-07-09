@@ -690,3 +690,15 @@ alter table appmap_edges
     references appmap_id_mappings on delete cascade;    
  
 -- /appmap
+
+-- aca
+alter table aca_user_group 
+	add CONSTRAINT aca_user_group_user_id 
+	FOREIGN KEY ( user_id ) 
+	REFERENCES aca_user ( user_id ) on delete cascade;
+	
+alter table aca_user_group 
+	add CONSTRAINT aca_user_group_group_id 
+	FOREIGN KEY ( group_id ) 
+	REFERENCES aca_group ( group_id ) on delete cascade;
+-- /aca

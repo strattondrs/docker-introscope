@@ -8,7 +8,7 @@
 #
 
 em:
-  image: apm-em:10.2
+  image: apm-em:10.3
   links:
     - db:db
   ports:
@@ -21,10 +21,10 @@ em:
     - ~/mm:/root/Introscope/config/modules
 
 db:
-  image: apm-postgres:10.2
+  image: apm-postgres:10.3
 
 webview:
-  image: apm-webview:10.2
+  image: apm-webview:10.3
   links:
     - em:em
   ports:

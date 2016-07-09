@@ -9,4 +9,4 @@ docker run -d \
 	-v ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv \
 	-v ~/git/docker-introscope/transfer/modules:/transfer/modules \
 	--name=apm-em \
-	apm-em
+	apm-em:10.3

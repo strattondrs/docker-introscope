@@ -5,7 +5,7 @@ MAINTAINER guenter.grossberger@ca.com
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.2.0.27
+ENV INTROSCOPE_VERSION=10.3.0.15
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope

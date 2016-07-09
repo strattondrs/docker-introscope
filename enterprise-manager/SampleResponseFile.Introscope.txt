@@ -3,7 +3,7 @@
 # Introscope Silent Installation Response File
 #
 # Sample Response File
-# CA Wily Introscope(R) Version 10.2.0 Release 10.2.0.27
+# CA Wily Introscope(R) Version 10.3.0 Release 10.3.0.15
 # Copyright (c) 2016 CA. All Rights Reserved.
 # Introscope(R) is a registered trademark of CA.
 #
@@ -66,11 +66,11 @@ ca-eulaFile=eula-introscope/ca-eula.txt
 # Example Unix install directory: /IntroscopeSilentInstall/
 # Left blank, this property will default to one of the following values:
 # On Windows...
-#    C:\\Program Files\\CA APM\\Introscope10.2.0.27\\
+#    C:\\Program Files\\CA APM\\Introscope10.3.0.15\\
 #        (Exact name and drive letter of program files directory may vary
 #        depending on OS configuration)
 # On Unix...
-#    /root/Introscope10.2.0.27/
+#    /root/Introscope10.3.0.15/
 #        (Under the logged-in-end-user's home directory. Exact directory may vary
 #        depending on user account.)
 USER_INSTALL_DIR=/opt/CA/Introscope
@@ -269,18 +269,6 @@ shouldEnableCAAPMForSharePointPortal=false
 #CA APM for Web Servers
 shouldEnableCAAPMForWebServers=false
 
-#CA APM for Oracle WebLogic Server
-shouldEnableCAAPMForWebLogic=false
-
-#CA APM for Oracle WebLogic Portal
-shouldEnableCAAPMForWebLogicPortal=false
-
-#CA APM for IBM WebSphere Application Server for Distributed Environments
-shouldEnableCAAPMForWebSphere=false
-
-#CA APM for IBM WebSphere Portal
-shouldEnableCAAPMForWebSpherePortal=false
-
 #CA APM for IBM WebSphere MQ and IBM WebSphere Message Broker
 shouldEnableCAAPMForWebSphereMQandMB=false
 
@@ -296,12 +284,6 @@ shouldEnableCAAPMForIBMzOSExtension=false
 #CA Cross-Enterprise Application Performance Management
 shouldEnableSysview=false
 
-#CA APM for CA SiteMinder Web Access Manager
-shouldEnableCAAPMForSiteMinder=false
-
-#CA APM for CA SiteMinder SNMP Collector
-shouldEnableCAAPMForSiteMinderSNMP=false
-
 #CA APM for Oracle Service Bus
 shouldEnableCAAPMForOSB=false
 
@@ -310,9 +292,6 @@ shouldEnableCAAPMForTibcoBW=false
 
 #CA APM for TIBCO Enterprise Message Service
 shouldEnableCAAPMForTibcoEMS=false
-
-#CA APM for IBM WebSphere Process Server/Business Process Management
-shouldEnableCAAPMForWPSandWESB=false
 
 #CA APM for webMethods Broker
 shouldEnableCAAPMForWMBroker=false
@@ -389,37 +368,45 @@ emAsServiceDisplayName=Introscope Enterprise Manager
 chosenDatabaseIsPostgres=true
 chosenDatabaseIsOracle=false
 
-# PostgreSQL properties (set these if you are using PostgreSQL database)
+# APM Database (on PostgreSQL) details (set these if you are using PostgreSQL database)
 # The APM database can be installed on Linux, Solaris and Windows platforms.
-# Set the following set of properties when pointing to an existing APM database
-# and when installing PostgreSQL database.
-
+# If you are pointing to an existing database, enter the details of that database here
 dbHost=DATABASE_URL
 dbPort=5432
 dbName=cemdb
 dbUser=admin
 dbPassword=wily
 
-# Set the following set of properties when installing the database (in addition to properties above).
+# Enter the PostgreSQL superuser name and password
+# You can skip these two properties if you are pointing to an existing database
+dbAdminUser=postgres
+dbAdminPassword=C@wilyapm90
 
-# database install dir for Windows. For Linux and Solaris set default to /opt/database
-# If you are running CA APM, it is recommended that you put
-# the APM database on its own disk or partition.
-#databaseDir=database
-#dbAdminUser=postgres
-#dbAdminPassword=C@wilyapm90
+# PostgreSQL install directory. You can enter an absolute path or a path relative to APM install Directory
+# $defaultDatabaseDir$  defaults to /opt/PostgreSQL-<version> on Linux, Solaris and C:\Program Files\CA APM\PostgreSQL-<version> on Windows
+# If you are running CA APM, it is recommended that you put the APM database on its own disk or partition.
+# If you are upgrading APM Database, enter the location of existing PostgreSQL home.
+# databaseDir=$defaultDatabaseDir$
 
-# For PostgreSQL DB installation on Windows platform only
-# Set the DB install script execution timeout wait time (in milliseconds)
-#dbInstallScriptTimeoutInMillis=240000
+# Set the following property if you are upgrading APM Database. You can enter an absolute path or a path relative to APM install Directory
+# APM sometimes bundles a newer version of PostgreSQL, which must reside in a different directory (if it differs by Major version like 8.4 and 9.2.x).
+# If PostgreSQL differs by minor version (eg: 9.2.4 and 9.2.15) then the old PostgreSQL directory is used and this property is ignored.
+# Please enter a directory which is different from the existing PostgreSQL install directory or upgrade process will fail.
+# $defaultDatabaseDir$ defaults to /opt/PostgreSQL-<version> on Linux, Solaris and C:\Program Files\CA APM\PostgreSQL-<version> on Windows
+# newPgInstallDir=$defaultDatabaseDir$
 
-# Set validateDatabase to true if you want to validate the existing APM database and
-# create new schema.
-validateDatabase=false
 
-# set upgradeSchema to true if you want to upgrade schema from 4.5.0 or 5.0.0 to 9.0.5
+# For PostgreSQL DB installation on Windows platform only.
+# Set the DB install script execution timeout wait time (in milliseconds).
+dbInstallScriptTimeoutInMillis=240000
+
+# Set validateDatabase to true if you already have a PostgreSQL installed and are going to create new APM database or if you are upgrading your database.
+# Set validateDatabase to false if you are installing PostgreSQL.
+# validateDatabase=true
+
+# set upgradeSchema to true only if you want to upgrade APM Database.
 # Schema can be upgraded only on Linux and Windows.
-upgradeSchema=false
+# upgradeSchema=true
 
 # Oracle properties (set these if you are using Oracle database.)
 # Set 'useExistingSchemaForOracle' property to true if the schema already exists
@@ -444,6 +431,7 @@ wvPort=8080
 wvEmHost=localhost
 wvEmPort=5001
 wvEmWebPort=8081
+
 
 ##########################################
 # WebView As Windows Service Settings

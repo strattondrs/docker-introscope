@@ -7,7 +7,7 @@ This project hosts docker (https://www.docker.com/) images build for the APM sol
 - Introscope Enterprise Manager database using Postgresql
 - An Introscope sample application (small EPAgent) for demonstration purposes
 
-This version supports Introscope version 10.1. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
+This version supports Introscope version 10.3. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
 
 The current idea is to have single-process containers, thus the Enterprise Manager, WebView and the APM postgres database are separate images. As docker containers are very light-weight, this is no overhead.
 

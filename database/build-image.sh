@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t apm-postgres:10.2 .
+docker build -t apm-postgres:10.3 .
