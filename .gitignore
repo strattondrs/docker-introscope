@@ -1,7 +1,9 @@
 introscope*otherUnix.jar
 osgiPackages.v*unix.tar
+acc-configserver*.tar
 introscope*.tar
 license.lic
 addons/*
+*.log
 .DS_Store
 /transfer
