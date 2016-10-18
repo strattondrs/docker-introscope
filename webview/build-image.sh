@@ -18,4 +18,5 @@ fi
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
 	docker build -t apm-webview:10.3 .
+	docker tag apm-webview:10.3 apm-webview:latest
 fi
