@@ -12,5 +12,5 @@ if [ ! -e "$ACC_TAR" ] ; then
 fi
 
 echo "Starting the build"
-exec docker build -t "apm-configserver:10.2" .
+exec docker build -t "apm-configserver" .
 
