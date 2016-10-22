@@ -7,7 +7,7 @@
 # - 4 Collectors (two connected to each MOM)
 # - 1 cross-cluster viewer accessing all 4 collectors.
 # - 3 webviews - two for the MOMs and one for the CDV
-# - 7 databases (each enterprise manager gets one)
+# - 3 databases (each cluster + cdv gets one)
 # - 4 sample applications (one connected to each collector)
 
 # CDV
@@ -84,13 +84,10 @@ momwebview2:
 collector1:
   image: apm-em:10.3
   links:
-    - collector1db:db
+    - mom1db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector1db:
-  image: apm-postgres:10.3
 
 sample1:
   image: apm-sample:9.7
@@ -100,13 +97,10 @@ sample1:
 collector2:
   image: apm-em:10.3
   links:
-    - collector2db:db
+    - mom1db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector2db:
-  image: apm-postgres:10.3
 
 sample2:
   image: apm-sample:9.7
@@ -116,13 +110,10 @@ sample2:
 collector3:
   image: apm-em:10.3
   links:
-    - collector3db:db
+    - mom2db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector3db:
-  image: apm-postgres:10.3
 
 sample3:
   image: apm-sample:9.7
@@ -132,13 +123,10 @@ sample3:
 collector4:
   image: apm-em:10.3
   links:
-    - collector4db:db
+    - mom2db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector4db:
-  image: apm-postgres:10.3
 
 sample4:
   image: apm-sample:9.7
