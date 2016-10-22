@@ -16,10 +16,14 @@ sed -i s#rest.base=http://{EM_HOST}:{EM_WEBSERVER_PORT}/apm/appmap#rest.base=htt
 sed -i "s#lax.nl.java.option.additional=#lax.nl.java.option.additional=-javaagent:./product/webview/agent/wily/Agent.jar -Dcom.wily.introscope.agentProfile=./product/webview/agent/wily/core/config/IntroscopeAgent.profile -Dcom.wily.introscope.wilyForWilyPrefix=com.wily -Djetty.home=./ #" ${INTROSCOPE_HOME}/Introscope_WebView.lax
 
 # workaround for agent defect: only IP or FQDN works, not hostname alone
-EM_IP_ADDRESS=`nslookup em | awk '/^Address/ { print $3 }' | sed -n '2{p;q}'`
-sed -i s#agentManager.url.1=localhost:5001#agentManager.url.1=${EM_IP_ADDRESS}:${EM_PORT}#g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
+EM_IP_ADDRESS=`nslookup ${EM_HOST} | awk '/^Address/ { print $3 }' | sed -n '2{p;q}'`
+sed -i "s#agentManager.url.1=localhost:5001#agentManager.url.1=${EM_IP_ADDRESS}:${EM_PORT}#g" ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
 #sed -i s#agentManager.url.1=localhost:5001#agentManager.url.1=${EM_HOST}:${EM-PORT}#g ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
 
+# activate Browser agent
+#sed -i "s/#introscope.agent.browseragent.enabled=false/introscope.agent.browseragent.enabled=true/" ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/IntroscopeAgent.profile
+#sed -i "s/#browseragent.pbd/browseragent.pbd/g" ${INTROSCOPE_HOME}/product/webview/agent/wily/core/config/default-typical.pbl
+#cp ${INTROSCOPE_HOME}/examples/APM/BrowserAgent/ext/BrowserAgentExt.jar ${INTROSCOPE_HOME}/core/ext
 
 # configure the heap
 if [ "${HEAP_XMX}" == "**DEFAULT**" ] ; then
@@ -27,6 +31,11 @@ if [ "${HEAP_XMX}" == "**DEFAULT**" ] ; then
 fi
 if [ -n "${HEAP_XMX}" ] ; then
 	sed -i s/Xmx512m/Xmx${HEAP_XMX}/g ${INTROSCOPE_HOME}/Introscope_Webview.lax
+fi
+
+# set agent hostname
+if [ -n "$AGENT_HOSTNAME" ]; then
+    JAVA_OPTS="$JAVA_OPTS -Dintroscope.agent.hostName=${AGENT_HOSTNAME}"
 fi
 
 # give EM time to start up
