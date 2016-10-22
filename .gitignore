@@ -6,4 +6,4 @@ license.lic
 addons/*
 *.log
 .DS_Store
-/transfer
+transfer/

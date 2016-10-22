@@ -6,32 +6,34 @@
 # a webview, and ACC Config Server.
 #
 
-em:
-  image: apm-em:10.3
-  links:
-    - db:db
-  ports:
-    - "5001:5001"
-    - "8081:8081"
-  environment:
-    - HEAP="2048m"
-  volumes:
+version: '2'
+services:
+    em:
+        image: apm-em
+        links:
+            - db:db
+        ports:
+            - "5001:5001"
+            - "8081:8081"
+        environment:
+            - HEAP="2048m"
+        volumes:
 #    - ~/mm:/root/Introscope/config/modules
-    - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
-    - ~/git/docker-introscope/transfer/modules:/transfer/modules
+            - ~/git/docker-introscope/transfer/xmltv:/transfer/xmltv
+            - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
-db:
-  image: apm-postgres:10.3
+    db:
+        image: apm-postgres
 
-webview:
-  image: apm-webview:10.3
-  links:
-    - em:em
-  ports:
-    - "8082:8080"
+    webview:
+        image: apm-webview
+        links:
+            - em:em
+        ports:
+            - "8082:8080"
 
-configserver:
-  image: "apm-configserver:10.2"
-  ports:
-    - "8443:8443"
-    - "8888:8888"
+#configserver:
+#  image: "apm-configserver"
+#  ports:
+#    - "8443:8443"
+#    - "8888:8888"
