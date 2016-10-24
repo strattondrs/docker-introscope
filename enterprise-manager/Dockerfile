@@ -1,11 +1,11 @@
-FROM jeanblanchard/busybox-java:7
+FROM jeanblanchard/java:7
 
 MAINTAINER guenter.grossberger@ca.com
 
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.3.0.19
+ENV INTROSCOPE_VERSION=10.5.0.10
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
@@ -20,7 +20,8 @@ COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
 COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
 COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
 
-RUN java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
+RUN apk add --update libstdc++ \
+  && java -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt
 
 COPY startup.sh /opt/introscope-install/startup.sh
 COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml

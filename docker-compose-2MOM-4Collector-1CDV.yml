@@ -13,7 +13,7 @@
 # CDV
 
 cdv:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - cdvdb:db
     - collector1:em1
@@ -25,10 +25,10 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 cdvwebview:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - cdv:em
   ports:
@@ -37,7 +37,7 @@ cdvwebview:
 # MOMs
 
 mom1:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - momdb1:db
     - collector1:em1
@@ -47,10 +47,10 @@ mom1:
     - CLUSTER_ROLE=MOM
 
 momdb1:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 momwebview1:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - mom1:em
   ports:
@@ -58,7 +58,7 @@ momwebview1:
 
 
 mom2:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - momdb2:db
     - collector3:em1
@@ -68,10 +68,10 @@ mom2:
     - CLUSTER_ROLE=MOM
 
 momdb2:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 momwebview2:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - mom2:em
   ports:
@@ -82,7 +82,7 @@ momwebview2:
 # Collectors
 
 collector1:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - mom1db:db
   environment:
@@ -95,7 +95,7 @@ sample1:
     - collector1:em
 
 collector2:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - mom1db:db
   environment:
@@ -108,7 +108,7 @@ sample2:
     - collector2:em
 
 collector3:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - mom2db:db
   environment:
@@ -121,7 +121,7 @@ sample3:
     - collector3:em
 
 collector4:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - mom2db:db
   environment:

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.3.0.19
+INTROSCOPE_VERSION=10.5.0.10
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 
@@ -15,6 +15,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-em:10.3 .
-    docker tag apm-em:10.3 apm-em:latest
+	docker build -t apm-em:10.5 .
+    docker tag apm-em:10.5 apm-em:latest
 fi

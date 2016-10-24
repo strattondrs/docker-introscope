@@ -689,6 +689,11 @@ alter table appmap_edges
     foreign key (transaction_id)
     references appmap_id_mappings on delete cascade;    
  
+alter table appmap_edges
+    add constraint appmap_backend_fk4
+    foreign key (backend_id)
+    references appmap_id_mappings on delete cascade;    
+ 
 -- /appmap
 
 -- aca

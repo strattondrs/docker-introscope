@@ -6,7 +6,7 @@
 #
 
 configserver:
-  image: "apm-configserver:10.2"
+  image: "apm-configserver"
   ports:
     - "8443:8443"
     - "8888:8888"

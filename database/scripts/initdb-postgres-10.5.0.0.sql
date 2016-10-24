@@ -25,7 +25,7 @@ Insert into ts_user_importances(ts_id, ts_name, ts_weight, ts_soft_delete, versi
 Insert into ts_user_importances(ts_id, ts_name, ts_weight, ts_soft_delete, version_info) values(7, 'Critical', 6, false, 1);
 Insert into ts_user_importances(ts_id, ts_name, ts_weight, ts_soft_delete, version_info) values(8, 'Trigger Immediately', 7, false, 1);
 
-insert into ts_domains(ts_id, ts_name, ts_ip_address, ts_port, ts_db_versions, ts_tran_importance_id, ts_user_importance_id, version_info, ts_dynamic_group_reassign) values (1, 'Local Domain', 0, 80, '10.3.0.0', 5, 5, 1, false);
+insert into ts_domains(ts_id, ts_name, ts_ip_address, ts_port, ts_db_versions, ts_tran_importance_id, ts_user_importance_id, version_info, ts_dynamic_group_reassign) values (1, 'Local Domain', 0, 80, '10.5.0.0', 5, 5, 1, false);
 
 -- insert rows into the AppDef auth types table
 Insert into ts_app_auth_types(ts_id, ts_name, ts_soft_delete, version_info) values(1, 'Application Specific', false, 1);
@@ -119,7 +119,7 @@ ALTER SEQUENCE ts_defect_meta_keys_ts_id_sq RESTART WITH 600000000000000000;
 -- insert rows into the Introscope Config table
 insert into ts_introscope_configs(ts_enabled, ts_soft_delete, version_info) values(true, false, 1);
 insert into ts_introscope_ems(version_info, ts_name, ts_description, ts_username, ts_password, ts_hostname, ts_em_version, ts_web_view_version, ts_web_start_version, ts_port, ts_web_view_port, ts_web_start_port, ts_has_web_view, ts_has_web_start, ts_tran_trace_duration, ts_tran_trace_threshold_percnt, ts_enabled, ts_soft_delete)
- values (1, '', '', '','','localhost', '10.3.0.0', '', '',5001, 8080, 8081, false, false, 30, 50, false, false);
+ values (1, '', '', '','','localhost', '10.5.0.0', '', '',5001, 8080, 8081, false, false, 30, 50, false, false);
 
 -- insert Jasper Reports items into ts_settings
 insert into ts_settings(ts_id, version_info, ts_key, ts_value, ts_description, ts_default, ts_soft_delete) values (1001, 1, 'reports.userImage', 'report-logo.gif', 'image shown at top of an exported report', 'wily_logo.gif', false);
@@ -627,4 +627,8 @@ INSERT INTO appmap_id_mappings (vertex_id, external_id, type)
 
 INSERT INTO appmap_vertices (vertex_id, start_time, end_time, fork, business_service)
     SELECT 0, TIMESTAMP '1979-1-1 0:0:0', TIMESTAMP '1979-1-1 0:0:0', 0, 'CA_APM_INTERNAL' WHERE NOT EXISTS(SELECT 1 FROM appmap_vertices WHERE vertex_id = 0);    
+
+INSERT INTO appmap_id_mappings (vertex_id, external_id, type)
+    SELECT -1, 'CA_APM_INTERNAL_METRIC', 'M' WHERE NOT EXISTS(SELECT 1 FROM appmap_id_mappings WHERE vertex_id = -1);
+
 -- /appmap

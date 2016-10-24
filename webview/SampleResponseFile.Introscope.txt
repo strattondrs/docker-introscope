@@ -3,7 +3,7 @@
 # Introscope Silent Installation Response File
 #
 # Sample Response File
-# CA Wily Introscope(R) Version 10.3.0 Release 10.3.0.15
+# CA Wily Introscope(R) Version 10.5.0 Release 10.5.0.10
 # Copyright (c) 2016 CA. All Rights Reserved.
 # Introscope(R) is a registered trademark of CA.
 #
@@ -66,17 +66,17 @@ ca-eulaFile=eula-introscope/ca-eula.txt
 # Example Unix install directory: /IntroscopeSilentInstall/
 # Left blank, this property will default to one of the following values:
 # On Windows...
-#    C:\\Program Files\\CA APM\\Introscope10.3.0.15\\
+#    C:\\Program Files\\CA APM\\Introscope10.5.0.10\\
 #        (Exact name and drive letter of program files directory may vary
 #        depending on OS configuration)
 # On Unix...
-#    /root/Introscope10.3.0.15/
+#    /root/Introscope10.5.0.10/
 #        (Under the logged-in-end-user's home directory. Exact directory may vary
 #        depending on user account.)
 USER_INSTALL_DIR=/opt/CA/Introscope
 
 # Introscope features to install. Must be a comma-delimited list.
-# Example: Enterprise Manager,WebView
+# Example: Enterprise Manager,WebView,Command Center Server
 # The APM database stores Business Services and Application Dependency Map information.
 # This database is deployed on a PostgreSQL database.
 # If you want to install APM database only, use,
@@ -122,7 +122,11 @@ shouldUpgrade=false
 #      Example Unix value: /IntroscopeSilentlyUpgradedInstall/
 #upgradedInstallDir=
 
-
+# To take backup of the existing installation during an upgrade,
+# uncomment this property. Set the property to false to not take backup.
+# This property is used when EM is being upgraded and also for DB only upgrades.
+# Defaults to true.
+#enableBackup=true
 
 ##########################################
 # Enterprise Manager Install Settings
@@ -371,7 +375,7 @@ chosenDatabaseIsOracle=false
 # APM Database (on PostgreSQL) details (set these if you are using PostgreSQL database)
 # The APM database can be installed on Linux, Solaris and Windows platforms.
 # If you are pointing to an existing database, enter the details of that database here
-dbHost=127.0.0.1
+dbHost=DATABASE_URL
 dbPort=5432
 dbName=cemdb
 dbUser=admin
@@ -477,6 +481,22 @@ wvAsServiceDisplayName=Introscope WebView
 #  - false for Windows platforms
 #  - true for other UNIX and mainframe platforms
 #wvLaxNlJavaOptionAdditional=-Xms256m -Xmx1024m -Djava.awt.headless=false -Dorg.owasp.esapi.resources=./config/esapi -Dsun.java2d.noddraw=true -XX:PermSize=128m -XX:MaxPermSize=256m
+
+
+################################################
+# Command Center Server (CCS) Directory Location
+#
+# ========================
+
+# Directory where CCS is to be installed.
+# The directory path must be absolute, not relative.
+# On Windows, backslashes must be escaped.
+# Left blank, this property will default to one of the following values:
+# On Windows...
+#    C:\\Program Files\\CA APM\\Command Center Server
+# On Linux...
+#    <SYSTEM_USER_HOME>/CommandCenterServer
+CCS_INSTALL_DIR=
 
 
 ###############################
