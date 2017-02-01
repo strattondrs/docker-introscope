@@ -1,7 +1,7 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.5.0.10
+INTROSCOPE_VERSION=10.5.0.20
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 
