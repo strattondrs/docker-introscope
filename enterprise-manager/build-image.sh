@@ -4,14 +4,18 @@ errors=false
 INTROSCOPE_VERSION=10.5.0.20
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
+DIR=`pwd`
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
-  tar xvopf introscope${INTROSCOPE_VERSION}other.tar ${INTROSCOPE_BIN}
+    if [ ! -e $INTROSCOPE_TAR ] ; then
+      echo "\n$INTROSCOPE_BIN is missing.\nPlease download $INTROSCOPE_TAR from https://support.ca.com and place it in this directory ($DIR).\n"
+      errors=true
+    else
+      tar xvopf introscope${INTROSCOPE_VERSION}other.tar ${INTROSCOPE_BIN}
+  fi
 fi
 
-if [ ! -e $INTROSCOPE_BIN ] ; then
-  echo "$INTROSCOPE_BIN is missing. Please download $INTROSCOPE_TAR from support.ca.com and place it in this directory."
-fi
+
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
