@@ -416,9 +416,14 @@ ALTER SEQUENCE seq_appmap_settings owned by appmap_settings.id;
 CREATE SEQUENCE seq_appmap_api_key_id MINVALUE 1;
 ALTER SEQUENCE seq_appmap_api_key_id owned by appmap_api_keys.id;
 
+CREATE SEQUENCE seq_appmap_mom_id_number MINVALUE 1;
 -- /appmap
 
 -- aca
 CREATE SEQUENCE sq_aca_acl MINVALUE 1;
 ALTER SEQUENCE sq_aca_acl owned by aca_acl.acl_id;
 -- /aca
+--assisted triage
+CREATE SEQUENCE sq_at_stories_pivot MINVALUE 1;
+ALTER SEQUENCE sq_at_stories_pivot owned by at_stories_pivot.story_id;
+-- /assisted triage

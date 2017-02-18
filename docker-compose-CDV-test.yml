@@ -14,7 +14,7 @@
 
 
 cdv:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - cdvdb:db
     - collector1:em1
@@ -24,7 +24,7 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 cdvwebview:
   image: webview
@@ -34,7 +34,7 @@ cdvwebview:
     - "8080:8080"
 
 collector1:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - collector1db:db
   environment:
@@ -50,7 +50,7 @@ sample1:
     - collector1:em
 
 collector2:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - collector2db:db
   environment:

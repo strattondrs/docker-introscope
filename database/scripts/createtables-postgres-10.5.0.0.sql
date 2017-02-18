@@ -8336,8 +8336,8 @@ CREATE TABLE appmap_vertices (
         start_time TIMESTAMP NOT NULL,
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
-        vertex_name VARCHAR(1024),
-        business_service VARCHAR(1024),
+        vertex_name VARCHAR(2048),
+        business_service VARCHAR(2048),
         gathered_attribs TEXT,
         other_attribs TEXT,
         PRIMARY KEY(vertex_id, start_time)
@@ -8348,8 +8348,8 @@ CREATE TABLE appmap_attribs (
         start_time TIMESTAMP NOT NULL,
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
-        attrib_name VARCHAR(256),
-        value VARCHAR(1024),
+        attrib_name VARCHAR(512),
+        value VARCHAR(2048),
         PRIMARY KEY(vertex_id, start_time, attrib_name)
 );
 
@@ -8357,12 +8357,13 @@ CREATE TABLE appmap_edges (
         source_id INTEGER NOT NULL,
         target_id INTEGER NOT NULL,
         transaction_id INTEGER,
+        backend_id INTEGER,
         start_time TIMESTAMP NOT NULL,
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
         attributes TEXT,
         checkpoint CHAR,
-        PRIMARY KEY(source_id, target_id, start_time, transaction_id)
+        PRIMARY KEY(source_id, target_id, start_time, transaction_id, backend_id)
 );
 
 CREATE TABLE appmap_settings (
@@ -8387,7 +8388,7 @@ CREATE TABLE appmap_api_keys(
 );
 
 CREATE TABLE appmap_model_vertices (
-        external_id VARCHAR(1024) PRIMARY KEY,
+        external_id VARCHAR(2048) PRIMARY KEY,
         update_time TIMESTAMP NOT NULL,
         data TEXT
 );
@@ -8404,6 +8405,7 @@ CREATE TABLE apm_secure_store(
 
 
 -- /appmap
+
 
 -- aca
 CREATE TABLE aca_user
@@ -8470,3 +8472,37 @@ create table aca_audit(
   change_to text null
 );
 -- /aca
+-- assistedtriage
+CREATE TABLE at_stories_pivot
+(
+        story_id int not null,
+       	PRIMARY KEY (story_id)
+);
+
+CREATE TABLE at_evidences
+(
+        story_id int NOT NULL,
+        vertex_id varchar(300) NOT NULL,
+        type varchar(30) NOT NULL,
+        occ_index int NOT NULL,
+        start_time timestamp  NOT NULL,
+        end_time timestamp NOT NULL,
+        fork BIGINT NOT NULL,
+        latest int NOT NULL,
+        statements text,
+        primary key (story_id, vertex_id, type, occ_index),
+        foreign key (story_id) references at_stories_pivot(story_id) on delete cascade
+);
+CREATE TABLE at_stories
+(
+        story_id int NOT NULL,
+        start_time timestamp  NOT NULL,
+        end_time timestamp NOT NULL,
+        fork BIGINT NOT NULL,
+        latest int NOT NULL,
+        statements text,
+        primary key (story_id, start_time),
+        foreign key (story_id) references at_stories_pivot(story_id) on delete cascade
+);
+-- /assistedtriage
+

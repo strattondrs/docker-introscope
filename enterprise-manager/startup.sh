@@ -85,6 +85,11 @@ if [ -d /transfer/xmltv ] ; then
 	cp /transfer/xmltv/*.xml ${INTROSCOPE_HOME}/ext/xmltv
 fi
 
+# copy javascript calculators from linked volume
+if [ -d /transfer/scripts ] ; then
+	cp /transfer/scripts/*.js ${INTROSCOPE_HOME}/scripts
+fi
+
 # configure the heap
 if [ "${HEAP_XMX}" == "**DEFAULT**" ] ; then
 	unset HEAP_XMX
@@ -126,6 +131,8 @@ if [ "${REST_API_ENABLE}" == "TRUE" ] ; then
   keytool -importcert -noprompt -keystore keystore -alias jettyssl -file jettyssl.crt -storepass password
 fi
 
+# speed up map creation
+sed -i 's/#introscope.enterprisemanager.transactiontrace.arrivalbuffer.incubationtime.fast=300/introscope.enterprisemanager.transactiontrace.arrivalbuffer.incubationtime.fast=60/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
 
 # now we correctly set everything and startup the enterprise manager.
 ${INTROSCOPE_HOME}/Introscope_Enterprise_Manager

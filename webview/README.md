@@ -1,10 +1,10 @@
 # docker-introscope-webview manager
-A docker (https://www.docker.com/) image build for the APM solution of CA Technologies (CA APM). This project build a docker image for an Introscope enterprise manager webview in version 10.3. It is meant to be used in combination with the docker image docker-introscope-enterprisemanager (https://github.com/stefansiegl/docker-introscope-enterprisemanager), which provides the enterprise manager.
+A docker (https://www.docker.com/) image build for the APM solution of CA Technologies (CA APM). This project build a docker image for an Introscope enterprise manager webview in version 10.5. It is meant to be used in combination with the docker image docker-introscope-enterprisemanager (https://github.com/stefansiegl/docker-introscope-enterprisemanager), which provides the enterprise manager.
 
 Note that due to licensing reasons, it is not possible to package the installation files and the license in this image. Please read the usage which file you have to put where.
 
 ## Necessary configuration prior to building
-The docker image needs the installation files from CA Wily Introscope. Simply copy the file ``introscope10.3.0.15otherUnix.jar`` (installer of the enterprise manager)
+The docker image needs the installation files from CA Wily Introscope. Simply copy the file ``introscope10.5.0.15otherUnix.jar`` (installer of the enterprise manager)
 
 It goes without saying that you need docker installed. If you are on Windows (like me) or Mac, you can use boot2docker - I works perfectly for me.
 

@@ -5,4 +5,4 @@ docker run -d \
 	-p 8082:8080 \
 	--link=apm-em:em \
 	--name=apm-webview \
-	apm-webview:10.3
+	apm-webview

@@ -1,11 +1,11 @@
-FROM jeanblanchard/busybox-java:7
+FROM jeanblanchard/java:7
 
 MAINTAINER guenter.grossberger@ca.com
 
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.3.0.15
+ENV INTROSCOPE_VERSION=10.5.0.20
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
@@ -14,7 +14,7 @@ ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
 ENV EM_HOST=em
 ENV EM_PORT=5001
 ENV EM_WEB_PORT=8081
-
+ENV AGENT_HOSTNAME=webview
 ENV HEAP_XMX **DEFAULT**
 
 COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}

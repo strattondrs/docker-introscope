@@ -7,13 +7,13 @@
 # - 4 Collectors (two connected to each MOM)
 # - 1 cross-cluster viewer accessing all 4 collectors.
 # - 3 webviews - two for the MOMs and one for the CDV
-# - 7 databases (each enterprise manager gets one)
+# - 3 databases (each cluster + cdv gets one)
 # - 4 sample applications (one connected to each collector)
 
 # CDV
 
 cdv:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - cdvdb:db
     - collector1:em1
@@ -25,10 +25,10 @@ cdv:
     - CLUSTER_ROLE=CDV
 
 cdvdb:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 cdvwebview:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - cdv:em
   ports:
@@ -37,7 +37,7 @@ cdvwebview:
 # MOMs
 
 mom1:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - momdb1:db
     - collector1:em1
@@ -47,10 +47,10 @@ mom1:
     - CLUSTER_ROLE=MOM
 
 momdb1:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 momwebview1:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - mom1:em
   ports:
@@ -58,7 +58,7 @@ momwebview1:
 
 
 mom2:
-  image: apm-em:10.3
+  image: apm-em
   links:
     - momdb2:db
     - collector3:em1
@@ -68,10 +68,10 @@ mom2:
     - CLUSTER_ROLE=MOM
 
 momdb2:
-  image: apm-postgres:10.3
+  image: apm-postgres
 
 momwebview2:
-  image: apm-webview:10.3
+  image: apm-webview
   links:
     - mom2:em
   ports:
@@ -82,15 +82,12 @@ momwebview2:
 # Collectors
 
 collector1:
-  image: apm-em:10.3
+  image: apm-em
   links:
-    - collector1db:db
+    - mom1db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector1db:
-  image: apm-postgres:10.3
 
 sample1:
   image: apm-sample:9.7
@@ -98,15 +95,12 @@ sample1:
     - collector1:em
 
 collector2:
-  image: apm-em:10.3
+  image: apm-em
   links:
-    - collector2db:db
+    - mom1db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector2db:
-  image: apm-postgres:10.3
 
 sample2:
   image: apm-sample:9.7
@@ -114,15 +108,12 @@ sample2:
     - collector2:em
 
 collector3:
-  image: apm-em:10.3
+  image: apm-em
   links:
-    - collector3db:db
+    - mom2db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector3db:
-  image: apm-postgres:10.3
 
 sample3:
   image: apm-sample:9.7
@@ -130,15 +121,12 @@ sample3:
     - collector3:em
 
 collector4:
-  image: apm-em:10.3
+  image: apm-em
   links:
-    - collector4db:db
+    - mom2db:db
   environment:
     - HEAP=1024m
     - CLUSTER_ROLE=Collector
-
-collector4db:
-  image: apm-postgres:10.3
 
 sample4:
   image: apm-sample:9.7

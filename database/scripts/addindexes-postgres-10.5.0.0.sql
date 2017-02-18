@@ -432,11 +432,12 @@ CREATE UNIQUE INDEX appmap_id_mappings_idx ON appmap_id_mappings(type, external_
 CREATE INDEX appmap_vertices_time1_idx ON appmap_vertices(fork, end_time, start_time, vertex_id);
 CREATE INDEX appmap_vertices_service1_idx ON appmap_vertices(fork, business_service, end_time, start_time, vertex_id);
 CREATE INDEX appmap_attribs1_idx ON appmap_attribs(fork, attrib_name, end_time, start_time, value, vertex_id);
-CREATE UNIQUE INDEX appmap_edges1_idx ON appmap_edges(fork, end_time, start_time, source_id, target_id, transaction_id);
+CREATE UNIQUE INDEX appmap_edges1_idx ON appmap_edges(fork, end_time, start_time, source_id, target_id, transaction_id, backend_id);
         
 CREATE INDEX appmap_edges_fk1_idx ON appmap_edges(fork, source_id, end_time, start_time);
 CREATE INDEX appmap_edges_fk2_idx ON appmap_edges(fork, target_id, end_time, start_time);
 CREATE INDEX appmap_edges_fk3_idx ON appmap_edges(fork, transaction_id, end_time, start_time);
+CREATE INDEX appmap_edges_fk4_idx ON appmap_edges(fork, backend_id, end_time, start_time);
 CREATE INDEX appmap_edges_chk_idx ON appmap_edges(checkpoint, fork, end_time, start_time, transaction_id);
 
 
@@ -466,3 +467,10 @@ CREATE UNIQUE INDEX aca_acl_ak2 ON aca_acl(service_provider_id, service_provider
  
 CREATE INDEX aca_audit_update_time_idx ON aca_audit (update_time);
 -- /aca
+
+-- assistedTriage
+CREATE INDEX at_evidences_trange_fork_idx ON at_evidences(fork, end_time, start_time);
+CREATE INDEX at_evidences_latest_idx ON at_evidences(story_id, vertex_id, type, latest);
+CREATE INDEX at_stories_trange_fork_idx ON at_stories(fork, end_time, start_time);
+CREATE INDEX at_stories_trange_fork_latest ON at_stories(fork, latest, end_time, start_time);
+-- /assistedTriage
