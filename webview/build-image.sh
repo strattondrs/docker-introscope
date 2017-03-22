@@ -1,9 +1,9 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.5.0.20
-INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}other.tar
-INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
+INTROSCOPE_VERSION=10.5.1.8
+INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}linuxAMD64.tar
+INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
 	if [ -e ../enterprise-manager/$INTROSCOPE_BIN ]; then
@@ -17,6 +17,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-webview:10.5 .
-	docker tag apm-webview:10.5 apm-webview:latest
+	docker build -t apm-webview:10.5.1 .
+	docker tag apm-webview:10.5.1 apm-webview:latest
 fi

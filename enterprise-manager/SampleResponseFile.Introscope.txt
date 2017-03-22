@@ -3,7 +3,7 @@
 # Introscope Silent Installation Response File
 #
 # Sample Response File
-# CA Wily Introscope(R) Version 10.5.0 Release 10.5.0.10
+# CA Wily Introscope(R) Version 10.5.1 Release 10.5.1.8
 # Copyright (c) 2016 CA. All Rights Reserved.
 # Introscope(R) is a registered trademark of CA.
 #
@@ -66,11 +66,11 @@ ca-eulaFile=eula-introscope/ca-eula.txt
 # Example Unix install directory: /IntroscopeSilentInstall/
 # Left blank, this property will default to one of the following values:
 # On Windows...
-#    C:\\Program Files\\CA APM\\Introscope10.5.0.10\\
+#    C:\\Program Files\\CA APM\\Introscope10.5.1.8\\
 #        (Exact name and drive letter of program files directory may vary
 #        depending on OS configuration)
 # On Unix...
-#    /root/Introscope10.5.0.10/
+#    /root/Introscope10.5.1.8/
 #        (Under the logged-in-end-user's home directory. Exact directory may vary
 #        depending on user account.)
 USER_INSTALL_DIR=/opt/CA/Introscope

@@ -5,27 +5,27 @@ MAINTAINER guenter.grossberger@ca.com
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.5.0.20
+ENV INTROSCOPE_VERSION=10.5.1.8
 ### End for new Introscope version
 
-ENV INTROSCOPE_HOME=/opt/CA/Introscope
-ENV INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}otherUnix.jar
-
-ENV EM_HOST=em
-ENV EM_PORT=5001
-ENV EM_WEB_PORT=8081
-ENV AGENT_HOSTNAME=webview
-ENV HEAP_XMX **DEFAULT**
+ENV INTROSCOPE_HOME=/opt/CA/Introscope \
+    INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 
 COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
 COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
-COPY startup.sh /opt/introscope-install/startup.sh
 COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
+COPY startup.sh /opt/introscope-install/startup.sh
 #COPY addons /opt/introscope-install/addons
 
-# run the installation of WebView
-RUN java -Xmx2048m -jar ${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt && \
+# run the installer
+RUN ./${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt && \
     chmod +x startup.sh
+
+ENV EM_HOST=em \
+    EM_PORT=5001 \
+    EM_WEB_PORT=8081 \
+    AGENT_HOSTNAME=webview \
+    HEAP_XMX=**DEFAULT**
 
 WORKDIR ${INTROSCOPE_HOME}
 

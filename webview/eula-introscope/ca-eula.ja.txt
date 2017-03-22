@@ -270,15 +270,14 @@
 # 
 # ライセンス契約者はこのライセンス契約書を最後まで読み、内容を理解した上で、最終行に「accept」と入力することで契約条件に同意したものと認めます。またライセンス契約者は、本使用条件の主旨に関してCAおよびライセンス契約者が完全に合意したことを本使用条件（本使用条件または本使用条件に定めるサード パーティ製ソフトウェアに関する条件を記載した注文書を含む）が示していることに同意するものとします。加えてライセンス契約者は、本使用条件の主旨に関する情報を入手した場合、その情報よりも本使用条件が優先されることに同意するものとします。ただし、ライセンス契約者に対して本製品のライセンス使用を許可する書面をCAおよびライセンス契約者の双方が交わした場合、本使用条件（下記のサード パーティ製品に関する契約条件を除く）は無効になるものとします。本使用条件を修正するには、CAおよびライセンス契約者双方の権限を委任された代表者同士が書面にて合意する必要があるものとします。  
 # 
-# = = = = =
 # 
-# ﻿CA Application Performance Management r. 10.3 (the "CA Software") Third Party Terms
+# CA Application Performance Management r. 10.5.1 (the "CA Software")
+# Third Party Terms
 # 
-# As referenced in the Specific Program Documentation for the CA Software, following is a list of third-party software components and their third party terms required by licensors of various third party components used with the CA Software:
+# As referenced in the Specific Program Documentation for the CA Software, following is a list of third-party software components and their third party terms required by licensors of various third party components used with the CA Software: 
 # 
-# --------------------- 
 # LsaUtility 1.0 
-# --------------------- 
+# 
 # This product includes LsaUtiliy software published at The Code Project (http://www.codeproject.com/KB/cs/lsadotnet.aspx). LsaUtility is distributed in accordance with the terms of the following:" 
 # Preamble 
 # This License governs Your use of the Work. This License is intended to allow developers to use the Source Code and Executable Files provided as part of the Work in any application in any form. 
@@ -319,7 +318,7 @@
 # You may distribute the Executable Files and Source Code only under the terms of this License, and You must include a copy of, or the Uniform Resource Identifier for, this License with every copy of the Executable Files or Source Code You distribute and ensure that anyone receiving such Executable Files and Source Code agrees that the terms of this License apply to such Executable Files and/or Source Code. You may not offer or impose any terms on the Work that alter or restrict the terms of this License or the recipients' exercise of the rights granted hereunder. You may not sublicense the Work. You must keep intact all notices that refer to this License and to the disclaimer of warranties. You may not distribute the Executable Files or Source Code with any technological measures that control access or use of the Work in a manner inconsistent with the terms of this License. 
 # You agree not to use the Work for illegal, immoral or improper purposes, or on pages containing illegal, immoral or improper material. The Work is subject to applicable export laws. You agree to comply with all such laws and regulations that may apply to the Work after Your receipt of the Work. 
 # Representations, Warranties and Disclaimer. THIS WORK IS PROVIDED "AS IS", "WHERE IS" AND "AS AVAILABLE", WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES OR CONDITIONS OR GUARANTEES. YOU, THE USER, ASSUME ALL RISK IN ITS USE, INCLUDING COPYRIGHT INFRINGEMENT, PATENT INFRINGEMENT, SUITABILITY, ETC. AUTHOR EXPRESSLY DISCLAIMS ALL EXPRESS, IMPLIED OR STATUTORY WARRANTIES OR CONDITIONS, INCLUDING WITHOUT LIMITATION, WARRANTIES OR CONDITIONS OF MERCHANTABILITY, MERCHANTABLE QUALITY OR FITNESS FOR A PARTICULAR PURPOSE, OR ANY WARRANTY OF TITLE OR NON-INFRINGEMENT, OR THAT THE WORK (OR ANY PORTION THEREOF) IS CORRECT, USEFUL, BUG-FREE OR FREE OF VIRUSES. YOU MUST PASS THIS DISCLAIMER ON WHENEVER YOU DISTRIBUTE THE WORK OR DERIVATIVE WORKS. 
-# Indemnity. You agree to defend, indemnify and hold harmless the Author and the Publisher from and against any claims, suits, losses, damages, liabilities, costs, and expenses (including reasonable legal or attorneys' fees) resulting from or relating to any use of the Work by You. 
+# Indemnity. You agree to defend, indemnify and hold harmless the Author and the Publisher from and against any claims, suits, losses, damages, liabilities, costs, and expenses (including reasonable legal or attorneys’ fees) resulting from or relating to any use of the Work by You. 
 # Limitation on Liability. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE LAW, IN NO EVENT WILL THE AUTHOR OR THE PUBLISHER BE LIABLE TO YOU ON ANY LEGAL THEORY FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES ARISING OUT OF THIS LICENSE OR THE USE OF THE WORK OR OTHERWISE, EVEN IF THE AUTHOR OR THE PUBLISHER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
 # Termination. 
 # This License and the rights granted hereunder will terminate automatically upon any breach by You of any term of this License. Individuals or entities who have received Derivative Works from You under this License, however, will not have their licenses terminated provided such individuals or entities remain in full compliance with those licenses. Sections 1, 2, 6, 7, 8, 9, 10 and 11 will survive any termination of this License. 
@@ -331,7 +330,6 @@
 # If any provision of this License is invalid or unenforceable under applicable law, it shall not affect the validity or enforceability of the remainder of the terms of this License, and without further action by the parties to this License, such provision shall be reformed to the minimum extent necessary to make such provision valid and enforceable. 
 # No term or provision of this License shall be deemed waived and no breach consented to unless such waiver or consent shall be in writing and signed by the party to be charged with such waiver or consent. 
 # This License constitutes the entire agreement between the parties with respect to the Work licensed herein. There are no understandings, agreements or representations with respect to the Work not specified herein. The Author shall not be bound by any additional provisions that may appear in any communication from You. This License may not be modified without the mutual written agreement of the Author and You.
-# 
 # 
 # 最終更新日 2016-05-25
 # 

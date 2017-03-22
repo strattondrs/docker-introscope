@@ -473,4 +473,5 @@ CREATE INDEX at_evidences_trange_fork_idx ON at_evidences(fork, end_time, start_
 CREATE INDEX at_evidences_latest_idx ON at_evidences(story_id, vertex_id, type, latest);
 CREATE INDEX at_stories_trange_fork_idx ON at_stories(fork, end_time, start_time);
 CREATE INDEX at_stories_trange_fork_latest ON at_stories(fork, latest, end_time, start_time);
+CREATE INDEX at_stories_context_idx ON at_stories_pivot(context_id);
 -- /assistedTriage

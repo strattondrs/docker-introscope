@@ -8476,13 +8476,14 @@ create table aca_audit(
 CREATE TABLE at_stories_pivot
 (
         story_id int not null,
+        context_id varchar(2048) not null,
        	PRIMARY KEY (story_id)
 );
 
 CREATE TABLE at_evidences
 (
         story_id int NOT NULL,
-        vertex_id varchar(300) NOT NULL,
+        vertex_id varchar(2048) NOT NULL,
         type varchar(30) NOT NULL,
         occ_index int NOT NULL,
         start_time timestamp  NOT NULL,

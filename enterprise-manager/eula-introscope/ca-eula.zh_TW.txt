@@ -271,7 +271,8 @@
 # 貴用戶同意其已閱讀並瞭解本授權，並且在以下鍵入 "accept" (接受) 後，表示接受其條款及條件。貴用戶亦同意本授權 (包括參照本合約之任何訂購單及在本合約後方所載明之第三方軟體之相關條款) 構成雙方針對本合約事項之完整協議，並同意本授權將取代貴用戶就本合約事項已取得之任何資訊，但本合約 (不包含下列第三人條款) 得以被授權人與 CA 共同簽署之書面合約取代之，以授與貴用戶使用產品之授權。本合約僅得由雙方授權代表所簽署之書面合約加以修改。  
 # 
 # = = = = =
-# ﻿CA Application Performance Management r. 10.3 (the "CA Software") Third Party Terms
+# CA Application Performance Management r. 10.5.1 (the "CA Software") 
+# Third Party Terms
 # 
 # As referenced in the Specific Program Documentation for the CA Software, following is a list of third-party software components and their third party terms required by licensors of various third party components used with the CA Software:
 # 
