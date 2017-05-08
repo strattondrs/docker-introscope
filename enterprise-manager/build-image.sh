@@ -23,6 +23,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-em:10.5.1 .
-    docker tag apm-em:10.5.1 apm-em:latest
+	docker build -t apm-em:10.5.1-HF9 .
+    docker tag apm-em:10.5.1-HF9 apm-em:latest
 fi

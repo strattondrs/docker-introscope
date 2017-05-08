@@ -9,7 +9,7 @@
 version: '2'
 services:
     em:
-        image: isl-dsdc.ca.com:5000/apmswat/apm-em:10.5.1
+        image: isl-dsdc.ca.com:5000/apmswat/apm-em:10.5.1-HF9
         links:
             - db:db
         ports:
@@ -24,6 +24,8 @@ services:
 
     db:
         image: isl-dsdc.ca.com:5000/apmswat/apm-postgres:10.5.1
+        ports:
+            - "5432:5432"
 
     webview:
         image: isl-dsdc.ca.com:5000/apmswat/apm-webview:10.5.1

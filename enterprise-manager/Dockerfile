@@ -39,6 +39,9 @@ RUN keytool -genkey -keyalg RSA -alias jettyssl \
 
 WORKDIR ${INTROSCOPE_HOME}
 
+COPY 10.5.1.21XHF.jar ${INTROSCOPE_HOME}/10.5.1.21XHF.jar
+RUN jre/bin/java -jar 10.5.1.21XHF.jar
+
 # Ports used by Enterprise Manager to listen for incoming connections (5001),
 # to serve web applications (8081) and public REST API (8444)
 EXPOSE 5001 8081 8444
