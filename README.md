@@ -8,7 +8,7 @@ This project hosts docker (https://www.docker.com/) images build for the APM sol
 - APM Control Center (ACC) Configuration Server
 - An Introscope sample application (small EPAgent) for demonstration purposes
 
-This version supports Introscope version 10.5. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
+This version supports Introscope version 10.5.2. For other versions please look at the branches in the GitHub project. Please feel free to contribute newer versions.
 
 The current idea is to have single-process containers, thus the Enterprise Manager, WebView, Config Server and the APM postgres database are separate images. As docker containers are very light-weight, this is no overhead.
 
@@ -23,7 +23,7 @@ Due to legal restrictions we currently cannot make Docker images available for d
 ## Run docker images
 
 ## Quick start with docker-compose
-1. Place the Introscope binaries into the folders. The enterprise manager projects need "introscope10.0.0.12otherUnix.jar" and "osgiPackages.v10.0.0.12.unix.tar".  The ACC Config Server requires acc-configserver-package.tar.
+1. Place the Introscope binaries `introscope<version>linuxAMD64.bin` in the main folder.
 2. Run "sudo docker-compose -f docker-compose--with-sample.yml up". This will start a demonstration environment with one enterprise manager, a database, a webview and a small sample application that delivers some metrics.
 3. Access the introscope webview at localhost:8080
 

@@ -5,6 +5,4 @@ exec docker run -d \
 	-p 8888:8888 \
 	-p 8443:8443 \
 	--name=apm-configserver \
-	apm-configserver:10.2
-
-
+	apm-configserver:10.5.2
