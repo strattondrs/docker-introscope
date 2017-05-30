@@ -1,30 +1,35 @@
-# Install configserver
+FROM jeanblanchard/java:7
 
-# Use the same base image as we use for the agent/controller to 
-# save image duplication. We don't actually want or need tomcat, 
-# but we just need a base image with a JVM on it.
-FROM jeanblanchard/busybox-java:7
+MAINTAINER guenter.grossberger@ca.com
 
-MAINTAINER james.hilling@ca.com
+WORKDIR /opt/introscope-install
 
-USER root
-ENV ACC_ROOT=/root
-WORKDIR /root
+### For new Introscope version you must change the following variables
+ENV INTROSCOPE_VERSION=10.5.2.7
+### End for new Introscope version
 
-# controller package tar needs to be available in the same directory as this Dockerfile!
-COPY acc-configserver-package.tar /tmp/
-RUN tar xf /tmp/acc-configserver-package.tar
+ENV INTROSCOPE_HOME=/opt/CA/Introscope \
+    INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 
-EXPOSE 8888
-EXPOSE 8443
+COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
+COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
+COPY SampleResponseFile.Introscope.txt /opt/introscope-install/SampleResponseFile.Introscope.txt
+
+# run the installer
+RUN ./${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt ; \
+ ls ${INTROSCOPE_HOME}/CommandCenterServer/apmccsrv.sh
+
+WORKDIR ${INTROSCOPE_HOME}/CommandCenterServer
+
+EXPOSE 8888 8443
 #EXPOSE 8088
 
 # You may wish to keep these paths on volumes to keep data persistent
 # across containers invokations.
-#VOLUME ["/root/APMCommandCenterServer/data", \
-#		"/root/APMCommandCenterServer/import", \
-#		"/root/APMCommandCenterServer/bundle", \
-#		"/root/APMCommandCenterServer/config", \
-#		"/root/APMCommandCenterServer/logs"]
+#VOLUME ["${INTROSCOPE_HOME}/CommandCenterServer/data", \
+#		"${INTROSCOPE_HOME}/CommandCenterServer/import", \
+#		"${INTROSCOPE_HOME}/CommandCenterServer/bundle", \
+#		"${INTROSCOPE_HOME}/CommandCenterServer/config", \
+#		"${INTROSCOPE_HOME}/CommandCenterServer/logs"]
 
-CMD ["/root/APMCommandCenterServer/apmccsrv.sh", "console"]
+CMD ["./apmccsrv.sh", "console"]

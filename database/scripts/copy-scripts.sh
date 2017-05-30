@@ -1,5 +1,5 @@
 #!/bin/bash
-DB_VERSION=10.5.1.0
+DB_VERSION=10.5.2.0
 EM_CONTAINER=dockerintroscope_em_1
 docker cp ${EM_CONTAINER}:/opt/CA/Introscope/install/database-scripts/add-apm-constraints-postgres-${DB_VERSION}.sql .
 docker cp ${EM_CONTAINER}:/opt/CA/Introscope/install/database-scripts/add-apm-indexes-postgres-${DB_VERSION}.sql .

@@ -5,7 +5,7 @@ MAINTAINER guenter.grossberger@ca.com
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.5.1.8
+ENV INTROSCOPE_VERSION=10.5.2.7
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
@@ -24,9 +24,9 @@ RUN ./${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt && \
 #RUN apk add --update libstdc++
 
 # if used within Cluster select "Collector", "MOM" or "CDV"
-ENV CLUSTER_ROLE **NONE** \
-    REST_API_ENABLE TRUE \
-    HEAP_XMX **DEFAULT**
+ENV CLUSTER_ROLE=**NONE** \
+    REST_API_ENABLE=TRUE \
+    HEAP_XMX=**DEFAULT**
 
 COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml
 
@@ -39,8 +39,8 @@ RUN keytool -genkey -keyalg RSA -alias jettyssl \
 
 WORKDIR ${INTROSCOPE_HOME}
 
-COPY 10.5.1.21XHF.jar ${INTROSCOPE_HOME}/10.5.1.21XHF.jar
-RUN jre/bin/java -jar 10.5.1.21XHF.jar
+#COPY 10.5.1.21XHF.jar ${INTROSCOPE_HOME}/10.5.1.21XHF.jar
+#RUN jre/bin/java -jar 10.5.1.21XHF.jar
 
 # Ports used by Enterprise Manager to listen for incoming connections (5001),
 # to serve web applications (8081) and public REST API (8444)

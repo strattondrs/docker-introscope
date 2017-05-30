@@ -1,16 +1,25 @@
 #!/bin/sh
 
-# Tested with ACC version 10.2.0.23
+#!/bin/sh
 
-set -eu
+errors=false
+INTROSCOPE_VERSION=10.5.2.7
+INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}linuxAMD64.tar
+INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
+DIR=`pwd`
 
-ACC_TAR="acc-configserver-package.tar"
-
-if [ ! -e "$ACC_TAR" ] ; then
-  echo "$ACC_TAR is missing. Please download $ACC_TAR from support.ca.com and place it in this directory."
-  exit 1
+if [ ! -e $INTROSCOPE_BIN ] ; then
+	if [ -e ../enterprise-manager/$INTROSCOPE_BIN ]; then
+		cp ../enterprise-manager/$INTROSCOPE_BIN .
+	else
+		if [ ! -e $INTROSCOPE_BIN ] ; then
+		  echo "$INTROSCOPE_BIN is missing. Please download $INTROSCOPE_TAR from support.ca.com and place it in this directory."
+		fi
+	fi
 fi
 
-echo "Starting the build"
-exec docker build -t "apm-configserver" .
-
+if [ "$errors" = false ] ; then
+	echo "Starting the build"
+	docker build -t apm-configserver:10.5.2 .
+    docker tag apm-configserver:10.5.2 apm-configserver:latest
+fi
