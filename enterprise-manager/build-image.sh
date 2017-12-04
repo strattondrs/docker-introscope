@@ -1,7 +1,7 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.5.2.7
+INTROSCOPE_VERSION=10.5.2.24
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}linuxAMD64.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 DIR=`pwd`
@@ -23,6 +23,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-em:10.5.2 .
-    docker tag apm-em:10.5.2 apm-em:latest
+	docker build -t apm-em:10.5.2HF23 .
+    docker tag apm-em:10.5.2HF23 apm-em:latest
 fi

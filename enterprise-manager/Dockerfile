@@ -1,15 +1,19 @@
-FROM jeanblanchard/java:7
+FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
 WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
-ENV INTROSCOPE_VERSION=10.5.2.7
+ENV INTROSCOPE_VERSION=10.5.2.24
 ### End for new Introscope version
 
+# if used within Cluster select "Collector", "MOM" or "CDV"
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
-    INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
+    INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin \
+    CLUSTER_ROLE=**NONE** \
+    REST_API_ENABLE=TRUE \
+    HEAP_XMX=**DEFAULT**
 
 COPY ${INTROSCOPE_BIN} /opt/introscope-install/${INTROSCOPE_BIN}
 COPY eula-introscope/ca-eula.txt /opt/introscope-install/eula-introscope/ca-eula.txt
@@ -23,24 +27,21 @@ RUN ./${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt && \
 
 #RUN apk add --update libstdc++
 
-# if used within Cluster select "Collector", "MOM" or "CDV"
-ENV CLUSTER_ROLE=**NONE** \
-    REST_API_ENABLE=TRUE \
-    HEAP_XMX=**DEFAULT**
-
-COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml
-
-RUN keytool -genkey -keyalg RSA -alias jettyssl \
-    -keystore ${INTROSCOPE_HOME}/config/internal/server/keystore \
-    -storepass password -keypass password -validity 7300 -dname "CN=docker-em.ca.com" \
-  && keytool -export -alias jettyssl \
-    -keystore ${INTROSCOPE_HOME}/config/internal/server/keystore \
-    -storepass password -file ${INTROSCOPE_HOME}/config/internal/server/jettyssl.crt
-
 WORKDIR ${INTROSCOPE_HOME}
 
-#COPY 10.5.1.21XHF.jar ${INTROSCOPE_HOME}/10.5.1.21XHF.jar
-#RUN jre/bin/java -jar 10.5.1.21XHF.jar
+# install latest hotfix
+COPY APM10.5.2.66XHF.jar ${INTROSCOPE_HOME}/APM10.5.2.66XHF.jar
+RUN jre/bin/java -jar APM10.5.2.66XHF.jar
+
+#COPY em-jetty-config.xml ${INTROSCOPE_HOME}/config/em-jetty-config.xml
+
+#RUN jre/bin/keytool -genkey -keyalg RSA -alias jettyssl \
+#    -keystore ${INTROSCOPE_HOME}/config/internal/server/keystore \
+#    -storepass password -keypass password -validity 7300 -dname "CN=docker-em.ca.com" \
+#  && jre/bin/keytool -export -alias jettyssl \
+#    -keystore ${INTROSCOPE_HOME}/config/internal/server/keystore \
+#    -storepass password -file ${INTROSCOPE_HOME}/config/internal/server/jettyssl.crt
+
 
 # Ports used by Enterprise Manager to listen for incoming connections (5001),
 # to serve web applications (8081) and public REST API (8444)
