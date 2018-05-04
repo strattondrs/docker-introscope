@@ -428,21 +428,21 @@ create index ts_users_UserDefGroupIdx on ts_users (ts_userdef_group_id);
 create index ts_web_servers_MonitorIdx on ts_web_servers (ts_monitor_id);
 
 -- appmap
-CREATE UNIQUE INDEX appmap_id_mappings_idx ON appmap_id_mappings(type, external_id);
+CREATE UNIQUE INDEX appmap_id_mappings_idx ON appmap_id_mappings(type, external_id, layer, tenant_id);
 CREATE INDEX appmap_vertices_time1_idx ON appmap_vertices(fork, end_time, start_time, vertex_id);
 CREATE INDEX appmap_vertices_service1_idx ON appmap_vertices(fork, business_service, end_time, start_time, vertex_id);
 CREATE INDEX appmap_attribs1_idx ON appmap_attribs(fork, attrib_name, end_time, start_time, value, vertex_id);
+CREATE INDEX appmap_attribs2_idx ON appmap_attribs(vertex_id, start_time, attrib_name);
 CREATE UNIQUE INDEX appmap_edges1_idx ON appmap_edges(fork, end_time, start_time, source_id, target_id, transaction_id, backend_id);
         
-CREATE INDEX appmap_edges_fk1_idx ON appmap_edges(fork, source_id, end_time, start_time);
-CREATE INDEX appmap_edges_fk2_idx ON appmap_edges(fork, target_id, end_time, start_time);
-CREATE INDEX appmap_edges_fk3_idx ON appmap_edges(fork, transaction_id, end_time, start_time);
-CREATE INDEX appmap_edges_fk4_idx ON appmap_edges(fork, backend_id, end_time, start_time);
+CREATE INDEX appmap_edges_fk1_idx ON appmap_edges(fork, source_id, end_time, start_time, semantic);
+CREATE INDEX appmap_edges_fk2_idx ON appmap_edges(fork, target_id, end_time, start_time, semantic);
+CREATE INDEX appmap_edges_fk3_idx ON appmap_edges(fork, transaction_id, end_time, start_time, semantic);
+CREATE INDEX appmap_edges_fk4_idx ON appmap_edges(fork, backend_id, end_time, start_time, semantic);
 CREATE INDEX appmap_edges_chk_idx ON appmap_edges(checkpoint, fork, end_time, start_time, transaction_id);
 
-
-CREATE INDEX appmap_settings_user_id_idx ON appmap_settings(user_id);
-CREATE INDEX appmap_settings_type_idx ON appmap_settings(type, deleted_at);
+CREATE INDEX appmap_settings_user_id_idx ON appmap_settings(tenant_id, user_id);
+CREATE INDEX appmap_settings_type_idx ON appmap_settings(tenant_id, type, deleted_at);
 
 CREATE INDEX appmap_model_vertices_idx ON appmap_model_vertices(update_time DESC);
 -- /appmap
@@ -474,4 +474,8 @@ CREATE INDEX at_evidences_latest_idx ON at_evidences(story_id, vertex_id, type, 
 CREATE INDEX at_stories_trange_fork_idx ON at_stories(fork, end_time, start_time);
 CREATE INDEX at_stories_trange_fork_latest ON at_stories(fork, latest, end_time, start_time);
 CREATE INDEX at_stories_context_idx ON at_stories_pivot(context_id);
+CREATE INDEX at_stories_refrence_idx ON at_stories_reference(fork,start_time,reference_code);
 -- /assistedTriage
+-- tiny url
+CREATE INDEX appmap_tinyurl_idx ON appmap_tinyurl (stored_at);
+-- /tiny url

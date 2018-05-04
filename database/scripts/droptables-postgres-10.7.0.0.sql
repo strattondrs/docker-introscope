@@ -16,3 +16,4 @@ DROP TABLE aca_group;
 DROP SEQUENCE sq_aca_acl;
 
 -- /ACA
+DROP TABLE IF EXISTS appmap_audit;

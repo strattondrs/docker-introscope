@@ -3,23 +3,22 @@
 #!/bin/sh
 
 errors=false
-INTROSCOPE_VERSION=10.5.2.24
+INTROSCOPE_VERSION=10.7.0.45
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}linuxAMD64.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 DIR=`pwd`
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
-	if [ -e ../enterprise-manager/$INTROSCOPE_BIN ]; then
-		cp ../enterprise-manager/$INTROSCOPE_BIN .
+	if [ ! -e ../${INTROSCOPE_TAR} ] ; then
+		echo "\n${INTROSCOPE_BIN} is missing.\nPlease download ${INTROSCOPE_TAR} from https://support.ca.com and place it in this directory (${DIR}).\n"
+		errors=true
 	else
-		if [ ! -e $INTROSCOPE_BIN ] ; then
-		  echo "$INTROSCOPE_BIN is missing. Please download $INTROSCOPE_TAR from support.ca.com and place it in this directory."
-		fi
+		tar xvopf ../${INTROSCOPE_TAR} ${INTROSCOPE_BIN}
 	fi
 fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-configserver:10.5.2HF23 .
-    docker tag apm-configserver:10.5.2HF23 apm-configserver:latest
+	docker build -t apm-configserver:10.7.0-HF3 .
+    docker tag apm-configserver:10.7.0-HF3 apm-configserver:latest
 fi

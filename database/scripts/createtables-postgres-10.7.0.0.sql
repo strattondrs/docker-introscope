@@ -8328,6 +8328,8 @@ CREATE TABLE appmap_id_mappings (
         vertex_id INTEGER PRIMARY KEY,
         external_id VARCHAR(2048) NOT NULL,
         type CHAR NOT NULL,
+        layer VARCHAR(32) NOT NULL DEFAULT 'ATC',
+        tenant_id VARCHAR(1024) NOT NULL DEFAULT 'CA_INTERNAL_NULL',
         attributes TEXT
 );
 
@@ -8349,8 +8351,7 @@ CREATE TABLE appmap_attribs (
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
         attrib_name VARCHAR(512),
-        value VARCHAR(2048),
-        PRIMARY KEY(vertex_id, start_time, attrib_name)
+        value VARCHAR(2048)
 );
 
 CREATE TABLE appmap_edges (
@@ -8361,12 +8362,14 @@ CREATE TABLE appmap_edges (
         start_time TIMESTAMP NOT NULL,
         end_time TIMESTAMP NOT NULL,
         fork BIGINT NOT NULL,
+        semantic VARCHAR(64),
         attributes TEXT,
         checkpoint CHAR,
         PRIMARY KEY(source_id, target_id, start_time, transaction_id, backend_id)
 );
 
 CREATE TABLE appmap_settings (
+		tenant_id VARCHAR(1024) NOT NULL DEFAULT 'CA_INTERNAL_NULL',
         id VARCHAR(256) NOT NULL,
         user_id INTEGER,
         type INTEGER NOT NULL,
@@ -8374,7 +8377,7 @@ CREATE TABLE appmap_settings (
         created_at TIMESTAMP NOT NULL,
         updated_at TIMESTAMP NOT NULL,
         deleted_at TIMESTAMP,
-        PRIMARY KEY(id)
+        PRIMARY KEY(tenant_id, id)
 );
 
 CREATE TABLE appmap_api_keys(
@@ -8388,9 +8391,12 @@ CREATE TABLE appmap_api_keys(
 );
 
 CREATE TABLE appmap_model_vertices (
-        external_id VARCHAR(2048) PRIMARY KEY,
+        external_id VARCHAR(2048) NOT NULL,
+        layer VARCHAR(32) NOT NULL DEFAULT 'ATC',
+        tenant_id VARCHAR(1024) NOT NULL DEFAULT 'CA_INTERNAL_NULL',
         update_time TIMESTAMP NOT NULL,
-        data TEXT
+        data TEXT,
+        PRIMARY KEY(external_id, layer, tenant_id)
 );
 
 CREATE TABLE apm_secure_store(
@@ -8472,12 +8478,14 @@ create table aca_audit(
   change_to text null
 );
 -- /aca
+
 -- assistedtriage
 CREATE TABLE at_stories_pivot
 (
         story_id int not null,
         context_id varchar(2048) not null,
-       	PRIMARY KEY (story_id)
+       	PRIMARY KEY (story_id),
+      	foreign key (story_id) references at_stories_pivot(story_id) on delete cascade
 );
 
 CREATE TABLE at_evidences
@@ -8494,6 +8502,7 @@ CREATE TABLE at_evidences
         primary key (story_id, vertex_id, type, occ_index),
         foreign key (story_id) references at_stories_pivot(story_id) on delete cascade
 );
+
 CREATE TABLE at_stories
 (
         story_id int NOT NULL,
@@ -8505,5 +8514,24 @@ CREATE TABLE at_stories
         primary key (story_id, start_time),
         foreign key (story_id) references at_stories_pivot(story_id) on delete cascade
 );
--- /assistedtriage
 
+CREATE TABLE at_stories_reference
+(
+        story_id int NOT NULL,
+        start_time timestamp NOT NULL,
+        end_time timestamp NOT NULL,
+        fork BIGINT NOT NULL,
+        reference_code varchar(512) NOT NULL,
+        primary key(story_id, start_time, reference_code),
+        foreign key(story_id, start_time) references at_stories(story_id,start_time)on delete cascade
+);
+ 
+-- /assistedtriage
+-- tiny url
+CREATE TABLE appmap_tinyurl (
+        tiny_id  VARCHAR(8) PRIMARY KEY,
+        tenant_id VARCHAR(1024) NOT NULL DEFAULT 'CA_INTERNAL_NULL',
+        stored_at TIMESTAMP NOT NULL,
+        the_url TEXT
+);
+-- /tiny url

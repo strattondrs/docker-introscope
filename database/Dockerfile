@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres:9.6-alpine
 
 MAINTAINER guenter.grossberger@ca.com
 
@@ -18,5 +18,5 @@ COPY createInstallDatabasesForIntroscope.sh createInstallDatabasesForIntroscope.
 # This script creates our initialization and moves this file to the initdb.d folder
 # we do this during docker build as we use quite some linux shell commands, and as some of us
 # use windows, we do want to use the same way of building.
-RUN chmod +x createInstallDatabasesForIntroscope.sh
-RUN ./createInstallDatabasesForIntroscope.sh
+RUN chmod +x createInstallDatabasesForIntroscope.sh \
+ && ./createInstallDatabasesForIntroscope.sh

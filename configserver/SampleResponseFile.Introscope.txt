@@ -56,7 +56,7 @@
 # On Windows, backslashes must be escaped.
 #    Example Windows value: C:\\Documents and Settings\\ca-eula.txt
 #    Example Unix value:    /home/myuser/ca-eula.txt
-ca-eulaFile=eula-introscope/ca-eula.txt
+ca-eulaFile=ca-eula.txt
 
 # Directory where Introscope is to be installed.
 # The directory path must be absolute, not relative.

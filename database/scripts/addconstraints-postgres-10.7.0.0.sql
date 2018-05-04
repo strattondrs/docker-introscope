@@ -695,7 +695,6 @@ alter table appmap_edges
     references appmap_id_mappings on delete cascade;    
  
 -- /appmap
-
 -- aca
 alter table aca_user_group 
 	add CONSTRAINT aca_user_group_user_id 

@@ -10,3 +10,4 @@ DROP TABLE APM_GEOLOCATION_METADATA;
 DROP TABLE at_stories;
 DROP TABLE at_evidences;
 DROP TABLE at_stories_pivot;
+DROP TABLE at_stories_reference;
