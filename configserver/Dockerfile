@@ -27,6 +27,8 @@ FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
+ENV INTROSCOPE_HOME=/opt/CA/Introscope
+
 WORKDIR ${INTROSCOPE_HOME}/CommandCenterServer
 
 COPY --from=install ${INTROSCOPE_HOME}/* ./

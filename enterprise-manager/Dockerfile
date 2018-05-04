@@ -37,7 +37,7 @@ ENV INTROSCOPE_HOME=/opt/CA/Introscope \
 
 WORKDIR ${INTROSCOPE_HOME}
 
-COPY --from=install ${INTROSCOPE_HOME}/* ./
+COPY --from=install ${INTROSCOPE_HOME}/ ./
 COPY startup.sh /opt/introscope-install/
 #COPY addons /opt/introscope-install/addons
 
