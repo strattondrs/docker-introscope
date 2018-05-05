@@ -27,6 +27,8 @@ FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
+LABEL version="10.7.0-HF3"
+
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
 
 WORKDIR ${INTROSCOPE_HOME}/CommandCenterServer

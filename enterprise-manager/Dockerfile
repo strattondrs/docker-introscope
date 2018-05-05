@@ -29,6 +29,8 @@ FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
+LABEL version="10.7.0-HF3"
+
 # if used within Cluster select "Collector", "MOM" or "CDV"
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
     CLUSTER_ROLE=**NONE** \
