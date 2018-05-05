@@ -33,7 +33,7 @@ ENV INTROSCOPE_HOME=/opt/CA/Introscope
 
 WORKDIR ${INTROSCOPE_HOME}/CommandCenterServer
 
-COPY --from=install ${INTROSCOPE_HOME}/* ./
+COPY --from=install ${INTROSCOPE_HOME}/ ${INTROSCOPE_HOME}/
 
 EXPOSE 8888 8443
 #EXPOSE 8088
