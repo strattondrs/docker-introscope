@@ -131,6 +131,10 @@ if [ "${REST_API_ENABLE}" == "TRUE" ] ; then
   keytool -importcert -noprompt -keystore keystore -alias jettyssl -file jettyssl.crt -storepass password
 fi
 
+if [ ! "${CEM_ENABLE}" == "TRUE" ] ; then
+    echo "introscope.enterprisemanager.tess.enabled=false" >> ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
+fi
+
 # speed up map creation
 sed -i 's/#introscope.enterprisemanager.transactiontrace.arrivalbuffer.incubationtime.fast=300/introscope.enterprisemanager.transactiontrace.arrivalbuffer.incubationtime.fast=60/' ${INTROSCOPE_HOME}/config/IntroscopeEnterpriseManager.properties
 
