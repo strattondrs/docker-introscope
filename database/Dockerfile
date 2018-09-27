@@ -2,7 +2,7 @@ FROM postgres:9.6-alpine
 
 MAINTAINER guenter.grossberger@ca.com
 
-LABEL version="10.7.0-HF3"
+LABEL version="10.7.0-SP2"
 
 # As defined in https://github.com/docker-library/docs/tree/master/postgres
 # we can extend postgres image by

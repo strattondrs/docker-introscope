@@ -5,14 +5,14 @@ WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
 ENV INTROSCOPE_VERSION=10.7.0.45 \
-    INTROSCOPE_HOTFIX=10.7.0HF03
+    INTROSCOPE_HOTFIX=APM10.7.0.115SP2
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
     INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 
 COPY ${INTROSCOPE_BIN} /opt/introscope-install/
-COPY APM${INTROSCOPE_HOTFIX}.jar /opt/introscope-install/
+COPY ${INTROSCOPE_HOTFIX}.jar /opt/introscope-install/
 
 COPY eula-introscope/ca-eula.txt SampleResponseFile.Introscope.txt /opt/introscope-install/
 
@@ -20,7 +20,7 @@ COPY eula-introscope/ca-eula.txt SampleResponseFile.Introscope.txt /opt/introsco
 RUN chmod +x ${INTROSCOPE_BIN} && \
     ./${INTROSCOPE_BIN} -f SampleResponseFile.Introscope.txt && \
     cd ${INTROSCOPE_HOME} && \
-    jre/bin/java -jar /opt/introscope-install/APM${INTROSCOPE_HOTFIX}.jar
+    jre/bin/java -jar /opt/introscope-install/${INTROSCOPE_HOTFIX}.jar
 
 
 
@@ -29,7 +29,7 @@ FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
-LABEL version="10.7.0-HF3"
+LABEL version="10.7.0-SP2"
 
 # if used within Cluster select "Collector", "MOM" or "CDV"
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \

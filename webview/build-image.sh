@@ -4,8 +4,8 @@ errors=false
 INTROSCOPE_VERSION=10.7.0.45
 INTROSCOPE_TAR=introscope${INTROSCOPE_VERSION}linuxAMD64.tar
 INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
-INTROSCOPE_HOTFIX=10.7.0HF03
-INTROSCOPE_HOTFIX_JAR=APM${INTROSCOPE_HOTFIX}.jar
+INTROSCOPE_HOTFIX=APM10.7.0.115SP2
+INTROSCOPE_HOTFIX_JAR=${INTROSCOPE_HOTFIX}.jar
 
 if [ ! -e $INTROSCOPE_BIN ] ; then
 	if [ ! -e ../${INTROSCOPE_TAR} ] ; then
@@ -27,6 +27,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-webview:10.7.0-HF3 .
-	docker tag apm-webview:10.7.0-HF3 apm-webview:latest
+	docker build -t apm-webview:10.7.0-SP2 .
+	docker tag apm-webview:10.7.0-SP2 apm-webview:latest
 fi

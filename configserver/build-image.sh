@@ -19,6 +19,6 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-configserver:10.7.0-HF3 .
-    docker tag apm-configserver:10.7.0-HF3 apm-configserver:latest
+	docker build -t apm-configserver:10.7.0-SP2 .
+    docker tag apm-configserver:10.7.0-SP2 apm-configserver:latest
 fi

@@ -5,7 +5,7 @@ WORKDIR /opt/introscope-install
 
 ### For new Introscope version you must change the following variables
 ENV INTROSCOPE_VERSION=10.7.0.45 \
-    INTROSCOPE_HOTFIX=10.7.0HF03
+    INTROSCOPE_HOTFIX=APM10.7.0.115SP2
 ### End for new Introscope version
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope \
@@ -27,7 +27,7 @@ FROM jeanblanchard/alpine-glibc
 
 MAINTAINER guenter.grossberger@ca.com
 
-LABEL version="10.7.0-HF3"
+LABEL version="10.7.0-SP2"
 
 ENV INTROSCOPE_HOME=/opt/CA/Introscope
 
