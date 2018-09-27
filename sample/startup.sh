@@ -11,8 +11,8 @@ if [ ! -f IntroscopeEPAgent-orig.properties ]
 fi
 cp IntroscopeEPAgent-orig.properties /opt/introscope-epagent/epagent/IntroscopeEPAgent.properties
 
-sed -i s/localhost/${EM_PORT_5001_TCP_ADDR}/g /opt/introscope-epagent/epagent/IntroscopeEPAgent.properties
-sed -i s/5001/${EM_PORT_5001_TCP_PORT}/g /opt/introscope-epagent/epagent/IntroscopeEPAgent.properties
+sed -i s/localhost/$EM_HOST/g /opt/introscope-epagent/epagent/IntroscopeEPAgent.properties
+sed -i s/5001/$EM_PORT/g /opt/introscope-epagent/epagent/IntroscopeEPAgent.properties
 
 # now we correctly set everything and startup the epagent
 cd /opt/introscope-epagent/epagent
