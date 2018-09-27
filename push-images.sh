@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IMAGE_VERSION_TAG=10.7.0-HF3
+IMAGE_VERSION_TAG=${IMAGE_VERSION_TAG}
 
 docker tag apm-em:$IMAGE_VERSION isl-dsdc.ca.com:5000/apmswat/apm-em:$IMAGE_VERSION
 docker tag apm-webview:$IMAGE_VERSION isl-dsdc.ca.com:5000/apmswat/apm-webview:$IMAGE_VERSION
