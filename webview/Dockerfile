@@ -12,7 +12,7 @@ ENV INTROSCOPE_HOME=/opt/CA/Introscope \
     INTROSCOPE_BIN=introscope${INTROSCOPE_VERSION}linuxAMD64.bin
 
 COPY ${INTROSCOPE_BIN} /opt/introscope-install/
-COPY {INTROSCOPE_HOTFIX}.jar /opt/introscope-install/
+COPY ${INTROSCOPE_HOTFIX}.jar /opt/introscope-install/
 
 COPY eula-introscope/ca-eula.txt SampleResponseFile.Introscope.txt /opt/introscope-install/
 
