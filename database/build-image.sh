@@ -15,5 +15,5 @@ esac
 
 sed -i ${SED_OPTIONS} "s/dbversion=.*/dbversion=${DB_VERSION}/g" ./createInstallDatabasesForIntroscope.sh
 
-docker build -t apm-postgres:10.7.0-SP2 .
-docker tag apm-postgres:10.7.0-SP2 apm-postgres:latest
+docker build -t apm-postgres:10.7.0-SP3 .
+docker tag apm-postgres:10.7.0-SP3 apm-postgres:latest

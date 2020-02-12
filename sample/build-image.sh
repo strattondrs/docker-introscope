@@ -11,5 +11,5 @@ fi
 
 if [ "$errors" = false ] ; then
 	echo "Starting the build"
-	docker build -t apm-sample:10.7.0-HF3 .
+	docker build -t apm-sample:10.7.0-SP3 .
 fi

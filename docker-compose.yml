@@ -9,7 +9,7 @@
 version: '2'
 services:
     em:
-        image: isl-dsdc.ca.com:5000/apmswat/apm-em:10.7.0-SP2
+        image: isl-dsdc.ca.com:5000/apmswat/apm-em:10.7.0-SP3
         links:
             - db:db
         ports:
@@ -24,19 +24,19 @@ services:
             - ~/git/docker-introscope/transfer/modules:/transfer/modules
 
     db:
-        image: isl-dsdc.ca.com:5000/apmswat/apm-postgres:10.7.0-SP2
+        image: isl-dsdc.ca.com:5000/apmswat/apm-postgres:10.7.0-SP3
 #        ports:
 #            - "5432:5432"
 
     webview:
-        image: isl-dsdc.ca.com:5000/apmswat/apm-webview:10.7.0-SP2
+        image: isl-dsdc.ca.com:5000/apmswat/apm-webview:10.7.0-SP3
         links:
             - em:em
         ports:
             - "8082:8080"
 
     configserver:
-        image: isl-dsdc.ca.com:5000/apmswat/apm-configserver:10.7.0-SP2
+        image: isl-dsdc.ca.com:5000/apmswat/apm-configserver:10.7.0-SP3
         ports:
             - "8443:8443"
             - "8888:8888"
