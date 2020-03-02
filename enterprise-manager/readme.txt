@@ -1,6 +1,6 @@
-CA Application Performance Management 10.7 Service Pack (SP) 2
+CA Application Performance Management 10.7 Service Pack (SP) 3
 
-APM10.7.0.115SP2
+APM10.7.0.197SP3
 
 Important Notes:
 ***************
@@ -12,7 +12,7 @@ If you have any pre-10.7.0 version installed, you cannot use this script. Use
 the 10.7.0 product installer to upgrade.
 
 If you have 10.7.0 GA version (10.7.0.45) or higher installed, use this script 
-to apply "10.7.0.115SP2". Please note that APM10.7.0.115SP2.jar is not 
+to apply "10.7.0.197SP3". Please note that APM10.7.0.197SP3.jar is not 
 intended to perform an upgrade of the complete product, it only replaces 
 the affected jars. The rest of the product files remain intact at the original 
 release number. This process is simple and should take only a few minutes.
@@ -193,13 +193,13 @@ How To Run The Hotfix Script:
    Note: Individual components that are installed together can also be patched 
    in one go. For example, EM, Webview, and APMSQL Server.
 
-3. Copy APM10.7.0.115SP2.jar to the HOME directory of the product components of which you would like 
+3. Copy APM10.7.0.197SP3.jar to the HOME directory of the product components of which you would like 
    to apply the hotfix. For example, if WebView is installed separately, run the hotfix script from
    that WebView HOME directory.
 
 4. Execute:
-   For Windows: jre\bin\java -jar APM10.7.0.115SP2.jar
-   For Unix:    jre/bin/java -jar APM10.7.0.115SP2.jar
+   For Windows: jre\bin\java -jar APM10.7.0.197SP3.jar
+   For Unix:    jre/bin/java -jar APM10.7.0.197SP3.jar
 
    Notes: Make sure to run the script using the appropriate user credentials.
           Since the PostgreSQL directory does not contain a JRE, if the Database patch is being applied 

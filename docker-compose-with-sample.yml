@@ -29,8 +29,9 @@ webview:
     - em:em
   ports:
     - "8080:8080"
+  hostname: apm-webview
 
 sample:
-  image: apm-sample:9.7
+  image: apm-sample:10.7.0-SP3
   links:
     - em:em
